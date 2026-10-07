@@ -4,279 +4,221 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tudo de Futebol (TDF) — O futebol não para. A gente também não.</title>
-  <meta name="description" content="Tudo de Futebol (TDF): notícias, análises táticas e estatísticas do futebol brasileiro e internacional. +70 mil apaixonados por futebol. Anuncie conosco." />
-  <meta name="theme-color" content="#0f0f0f" />
+  <meta name="description" content="Tudo de Futebol (TDF): notícias, análises táticas e estatísticas do futebol brasileiro e internacional para +70 mil apaixonados. O futebol não para. A gente também não." />
+  <meta name="theme-color" content="#050706" />
   <meta property="og:title" content="Tudo de Futebol (TDF)" />
-  <meta property="og:description" content="O futebol não para. A gente também não. +70 mil apaixonados por futebol no Instagram." />
+  <meta property="og:description" content="O futebol não para. A gente também não. Notícias, análises táticas e estatísticas para +70 mil apaixonados por futebol." />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3 58 12v19c0 15-11 25-26 30C17 56 6 46 6 31V12z' fill='%230f0f0f' stroke='%2300E676' stroke-width='4'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' font-size='18' fill='%2300E676'%3ETDF%3C/text%3E%3C/svg%3E" />
+  <meta property="og:image" content="https://lucasskenjy.github.io/Tudodefutebol-preview/assets/tdf-logo-estadio.jpg" />
+  <link rel="preload" as="image" href="assets/tdf-logo-estadio.jpg" fetchpriority="high" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 132'%3E%3Cpath d='M60 4 112 20v40c0 33-21 53-52 68C29 113 8 93 8 60V20z' fill='%23050706' stroke='%2300E676' stroke-width='8'/%3E%3Ctext x='60' y='90' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' font-size='40' fill='%2300E676'%3ETDF%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
 
   <style>
     /* =========================================================
        TOKENS
+       Paleta: preto de estádio à noite, verde refletor (marca TDF),
+       branco giz das linhas do campo.
        ========================================================= */
     :root {
-      --bg: #0f0f0f;
-      --bg-2: #141414;
-      --card: #1a1a1a;
-      --card-2: #202020;
-      --line: #2a2a2a;
-      --line-soft: rgba(255, 255, 255, 0.06);
-      --text: #ffffff;
-      --text-2: #b8b8b8;
-      --text-3: #7d7d7d;
-      --neon: #00E676;
-      --neon-2: #00FF66;
-      --neon-dim: rgba(0, 230, 118, 0.12);
-      --neon-glow: 0 0 0 1px rgba(0, 230, 118, 0.35), 0 10px 40px -10px rgba(0, 230, 118, 0.55);
-      --radius: 16px;
-      --radius-sm: 10px;
-      --container: 1200px;
-      --gutter: 16px;
-      --font-display: "Montserrat", system-ui, sans-serif;
-      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-      --ease: cubic-bezier(0.22, 1, 0.36, 1);
-      --header-h: 68px;
-    }
+      --ink: #050706;
+      --ink-2: #0a0f0c;
+      --turf: #06150d;
+      --turf-2: #0b2416;
+      --chalk: #f2f5f0;
+      --fog: #9aa39c;
+      --fog-2: #7c867e;
+      --neon: #00e676;
+      --neon-hi: #62ffae;
+      --line: rgba(242, 245, 240, 0.1);
+      --line-2: rgba(242, 245, 240, 0.2);
+      --on-neon: #03140a;
 
-    @media (min-width: 768px) {
-      :root { --gutter: 32px; --header-h: 76px; }
+      --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+      --f-body: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --header-h: 64px;
+      --gutter: 16px;
+      --container: 1280px;
     }
+    @media (min-width: 768px) { :root { --gutter: 32px; --header-h: 72px; } }
+    @media (min-width: 1280px) { :root { --gutter: 48px; } }
 
     /* =========================================================
        BASE
        ========================================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html {
+      background: var(--ink);
       scroll-behavior: smooth;
       scroll-padding-top: var(--header-h);
       -webkit-text-size-adjust: 100%;
     }
-
     body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: var(--f-body);
+      background: var(--ink);
+      color: var(--chalk);
       font-size: 16px;
+      line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-
-    img, svg { display: block; max-width: 100%; }
+    img, svg, canvas { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font: inherit; color: inherit; }
-    ::selection { background: var(--neon); color: #000; }
+    ul, ol { list-style: none; }
+    ::selection { background: var(--neon); color: var(--on-neon); }
+    :focus-visible { outline: 2px solid var(--neon); outline-offset: 4px; }
 
-    :focus-visible {
-      outline: 2px solid var(--neon);
-      outline-offset: 3px;
-      border-radius: 6px;
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+    .sr-only {
+      position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
     }
-
-    .container {
-      width: 100%;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 var(--gutter);
+    .skip {
+      position: fixed; top: 8px; left: 8px; z-index: 300; padding: 10px 16px;
+      background: var(--neon); color: var(--on-neon); font-weight: 700;
+      transform: translateY(-160%); transition: transform 0.2s;
     }
+    .skip:focus { transform: none; }
 
-    .section { padding: 72px 0; position: relative; }
-    @media (min-width: 900px) { .section { padding: 112px 0; } }
-
+    /* ---------- Shared type ---------- */
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--neon);
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--f-mono); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--neon);
     }
-    .eyebrow::before {
-      content: "";
-      width: 22px;
-      height: 3px;
-      border-radius: 2px;
-      background: var(--neon);
-      box-shadow: 0 0 12px var(--neon);
-    }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; box-shadow: 0 0 10px currentColor; }
 
-    .section-title {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: clamp(28px, 5vw, 46px);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin: 14px 0 14px;
-      text-transform: uppercase;
+    .sec-title {
+      font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(46px, 8.4vw, 112px); line-height: 0.98; letter-spacing: 0.005em;
+      margin-top: 14px;
     }
-    .section-title em { font-style: italic; color: var(--neon); }
-
-    .section-lead {
-      color: var(--text-2);
-      font-size: 17px;
-      max-width: 620px;
+    .sec-title .o, .o {
+      color: transparent; -webkit-text-stroke: 1.5px var(--neon);
     }
+    .sec-title, .lens h3, .story__title, .final__sub, .hero__sub { text-wrap: balance; }
+    .sec-lead { color: var(--fog); font-size: 17px; max-width: 560px; margin-top: 18px; }
 
-    .section-head { margin-bottom: 40px; }
-    @media (min-width: 900px) {
-      .section-head.row {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 32px;
-      }
+    .live-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--neon); flex-shrink: 0;
+      box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.6); animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.6); }
+      70% { box-shadow: 0 0 0 9px rgba(0, 230, 118, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
     }
 
     /* =========================================================
-       BUTTONS
+       BUTTONS — paralelogramo, como placas de publicidade de campo
        ========================================================= */
     .btn {
-      --btn-bg: transparent;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 50px;
-      padding: 0 24px;
-      border-radius: 999px;
-      border: 2px solid transparent;
-      background: var(--btn-bg);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 14px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s, color 0.25s, border-color 0.25s;
+      --bg: transparent; --bd: var(--line-2); --fg: var(--chalk);
+      position: relative; isolation: isolate;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 28px;
+      font-family: var(--f-display); font-weight: 800; font-size: 18px;
+      letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.05;
+      color: var(--fg); background: none; border: 0; cursor: pointer; white-space: nowrap;
+      transition: color 0.25s;
     }
-    .btn svg { width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.25s var(--ease); }
+    .btn::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: var(--bg); border: 1.5px solid var(--bd);
+      transform: skewX(-12deg);
+      transition: background 0.25s, border-color 0.25s, box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.3s var(--ease); }
     .btn:hover svg.arrow { transform: translateX(4px); }
+    .btn:hover::before { transform: skewX(-12deg) translateY(-2px); }
 
-    .btn-primary {
-      --btn-bg: var(--neon);
-      color: #04140a;
+    .btn--primary { --bg: var(--neon); --bd: var(--neon); --fg: var(--on-neon); }
+    .btn--primary:hover::before {
+      background: var(--neon-hi); border-color: var(--neon-hi);
+      box-shadow: 0 14px 40px -10px rgba(0, 230, 118, 0.7);
     }
-    .btn-primary:hover {
-      --btn-bg: var(--neon-2);
-      transform: translateY(-2px);
-      box-shadow: var(--neon-glow);
-    }
-
-    .btn-ghost {
-      border-color: rgba(255, 255, 255, 0.22);
-      color: var(--text);
-    }
-    .btn-ghost:hover {
-      border-color: var(--neon);
-      color: var(--neon);
-      transform: translateY(-2px);
-    }
-
-    .btn-sm { min-height: 42px; padding: 0 18px; font-size: 12.5px; }
-    .btn-block { width: 100%; }
+    .btn--ghost:hover { color: var(--neon); }
+    .btn--ghost:hover::before { border-color: var(--neon); background: rgba(0, 230, 118, 0.06); }
+    .btn--sm { min-height: 40px; padding: 0 18px; font-size: 15px; }
+    .btn--lg { min-height: 62px; padding: 10px 38px; font-size: clamp(17px, 2.2vw, 22px); white-space: normal; text-align: center; }
+    .btn--wa:hover { color: #25d366; }
+    .btn--wa:hover::before { border-color: #25d366; background: rgba(37, 211, 102, 0.08); }
 
     /* =========================================================
-       HEADER
+       HEADER + SCOREBUG (relógio da partida = progresso da página)
        ========================================================= */
     .header {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 100;
-      height: var(--header-h);
-      transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+      position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--header-h);
       border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
     }
-    .header.scrolled {
-      background: rgba(15, 15, 15, 0.82);
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      border-bottom-color: var(--line-soft);
+    .header.is-scrolled {
+      background: rgba(5, 7, 6, 0.86);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      backdrop-filter: blur(12px) saturate(140%);
+      border-bottom-color: var(--line);
     }
-    .header .container {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+    .header__row { height: 100%; display: flex; align-items: center; gap: 14px; }
 
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
+    .brand { display: inline-flex; align-items: center; gap: 10px; margin-right: auto; }
+    .brand__crest { width: 32px; height: 36px; filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.45)); }
+    .brand__name {
+      font-family: var(--f-display); font-weight: 900; font-size: 19px; line-height: 0.92;
+      text-transform: uppercase; letter-spacing: 0.02em;
     }
-    .logo-badge { width: 40px; height: 44px; filter: drop-shadow(0 0 10px rgba(0, 230, 118, 0.35)); }
-    .logo-text {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-style: italic;
-      line-height: 1;
-      font-size: 15px;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+    .brand__name small {
+      display: block; font-family: var(--f-mono); font-weight: 600; font-size: 10px;
+      letter-spacing: 0.22em; color: var(--neon);
     }
-    .logo-text span { display: block; color: var(--neon); font-size: 11px; letter-spacing: 0.24em; margin-top: 3px; font-style: normal; }
 
     .nav { display: none; }
-    .nav ul { display: flex; gap: 4px; list-style: none; }
+    .nav ul { display: flex; gap: 2px; }
     .nav a {
-      position: relative;
-      display: block;
-      padding: 8px 14px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-2);
-      transition: color 0.2s;
+      position: relative; display: block; padding: 8px 14px;
+      font-family: var(--f-display); font-weight: 800; font-size: 17px; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--fog); transition: color 0.2s;
     }
     .nav a::after {
-      content: "";
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 2px;
-      height: 2px;
-      background: var(--neon);
-      border-radius: 2px;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s var(--ease);
+      content: ""; position: absolute; left: 14px; right: 14px; bottom: 3px; height: 2px;
+      background: var(--neon); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s var(--ease);
     }
-    .nav a:hover, .nav a.active { color: var(--text); }
-    .nav a:hover::after, .nav a.active::after { transform: scaleX(1); }
+    .nav a:hover, .nav a.is-active { color: var(--chalk); }
+    .nav a:hover::after, .nav a.is-active::after { transform: scaleX(1); }
+    .nav a.nav__quiet { color: var(--fog-2); }
 
-    .header-cta { display: none; }
+    .scorebug {
+      display: inline-flex; align-items: stretch; height: 30px;
+      border: 1px solid var(--line-2); background: rgba(5, 7, 6, 0.6);
+      font-family: var(--f-mono); font-weight: 600; font-size: 12px; line-height: 1;
+    }
+    .scorebug__team {
+      display: flex; align-items: center; padding: 0 8px;
+      background: var(--neon); color: var(--on-neon);
+      font-family: var(--f-display); font-weight: 900; font-size: 15px; letter-spacing: 0.06em;
+    }
+    .scorebug__half { display: none; align-items: center; padding: 0 8px; color: var(--fog); border-right: 1px solid var(--line); }
+    .scorebug__min {
+      display: flex; align-items: center; justify-content: flex-end; min-width: 5ch; padding: 0 8px;
+      color: var(--neon); font-variant-numeric: tabular-nums;
+    }
+    @media (min-width: 420px) { .scorebug__half { display: flex; } }
+
+    .header__cta { display: none; }
 
     .menu-toggle {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: var(--card);
-      cursor: pointer;
+      width: 44px; height: 44px; display: grid; place-items: center;
+      border: 1px solid var(--line-2); background: transparent; cursor: pointer;
     }
-    .menu-toggle span,
-    .menu-toggle span::before,
-    .menu-toggle span::after {
-      content: "";
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      position: relative;
+    .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after {
+      content: ""; display: block; width: 20px; height: 2px; background: var(--chalk); position: relative;
       transition: transform 0.3s var(--ease), background 0.2s;
     }
     .menu-toggle span::before { position: absolute; top: -6px; }
@@ -286,975 +228,766 @@
     .menu-open .menu-toggle span::after { transform: translateY(-6px) rotate(-45deg); }
 
     .mobile-menu {
-      position: fixed;
-      inset: var(--header-h) 0 0 0;
-      z-index: 99;
-      background: rgba(10, 10, 10, 0.97);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 24px var(--gutter) 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
+      position: fixed; inset: var(--header-h) 0 0 0; z-index: 99;
+      background: rgba(5, 7, 6, 0.98);
+      padding: 24px var(--gutter) 40px; display: flex; flex-direction: column; gap: 4px;
+      opacity: 0; visibility: hidden; transform: translateY(-8px);
       transition: opacity 0.3s, transform 0.3s var(--ease), visibility 0.3s;
+      overflow-y: auto;
     }
     .menu-open .mobile-menu { opacity: 1; visibility: visible; transform: none; }
     .menu-open { overflow: hidden; }
-    .mobile-menu a.m-link {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 28px;
-      text-transform: uppercase;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--line-soft);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .mobile-menu .m-link {
+      font-family: var(--f-display); font-weight: 900; font-size: 40px; line-height: 1;
+      text-transform: uppercase; padding: 14px 0; border-bottom: 1px solid var(--line);
     }
-    .mobile-menu a.m-link small { color: var(--neon); font-size: 13px; font-weight: 800; }
-    .mobile-menu .btn { margin-top: 24px; }
+    .mobile-menu .m-link--quiet { font-size: 26px; color: var(--fog); }
+    .mobile-menu .btn { margin-top: 28px; }
 
-    @media (min-width: 1000px) {
-      .nav, .header-cta { display: block; }
-      .header-cta { display: inline-flex; }
+    @media (min-width: 1040px) {
+      .nav { display: block; }
+      .header__cta { display: inline-flex; }
       .menu-toggle, .mobile-menu { display: none; }
     }
 
     /* =========================================================
-       HERO
+       HERO — estádio à noite
        ========================================================= */
     .hero {
-      position: relative;
-      padding: calc(var(--header-h) + 48px) 0 64px;
-      overflow: hidden;
-      isolation: isolate;
+      --p: 0; --mx: 0; --my: 0;
+      position: relative; isolation: isolate; overflow: hidden;
+      min-height: 100vh; min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: calc(var(--header-h) + 16px) 0 calc(52px + 36px);
     }
-    @media (min-width: 900px) {
-      .hero { padding: calc(var(--header-h) + 80px) 0 110px; min-height: 92vh; display: flex; align-items: center; }
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
+    .stadium { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--ink); }
+    .stadium__sky {
+      position: absolute; inset: 0;
       background:
-        radial-gradient(60% 50% at 80% 20%, rgba(0, 230, 118, 0.16), transparent 70%),
-        radial-gradient(50% 40% at 10% 90%, rgba(0, 230, 118, 0.08), transparent 70%),
-        var(--bg);
+        radial-gradient(70% 55% at 50% 0%, rgba(0, 230, 118, 0.22), transparent 70%),
+        radial-gradient(40% 30% at 8% 4%, rgba(160, 255, 200, 0.16), transparent 70%),
+        radial-gradient(40% 30% at 92% 4%, rgba(160, 255, 200, 0.16), transparent 70%),
+        linear-gradient(180deg, #071a10 0%, var(--ink) 75%);
     }
-    .hero-pitch {
-      position: absolute;
-      inset: -10% -20% auto auto;
-      width: min(900px, 140vw);
-      opacity: 0.09;
-      transform: rotate(-12deg);
-      pointer-events: none;
+    .lights {
+      position: absolute; top: calc(var(--header-h) + 2vh); width: clamp(56px, 8vw, 110px); height: clamp(22px, 3vw, 38px);
+      background: radial-gradient(circle, #f2fff7 0 1.6px, transparent 2.2px) 0 0 / 9px 9px, rgba(180, 255, 210, 0.12);
+      box-shadow: 0 0 50px 18px rgba(120, 255, 180, 0.35), 0 0 140px 40px rgba(0, 230, 118, 0.18);
+      animation: lightsOn 1.4s steps(4, end) 0.1s both;
     }
-    .hero-grid-lines {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    .lights--l { left: 6%; transform: rotate(-6deg); }
+    .lights--r { right: 6%; transform: rotate(6deg); }
+    @keyframes lightsOn { 0% { opacity: 0; } 30% { opacity: 1; } 45% { opacity: 0.2; } 100% { opacity: 1; } }
+
+    .beam {
+      position: absolute; top: calc(var(--header-h) + 3vh); width: 34vw; height: 120%;
+      transform-origin: 50% 0; transform: rotate(var(--a));
+      background: linear-gradient(180deg, rgba(190, 255, 215, 0.34), rgba(0, 230, 118, 0.1) 38%, transparent 72%);
+      clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+      mix-blend-mode: screen; opacity: 0.75;
+      animation: beamIn 1.6s var(--ease) 0.3s both, sway 11s ease-in-out 1.9s infinite alternate;
+    }
+    .beam--l1 { left: calc(6% - 12vw); --a: -34deg; }
+    .beam--l2 { left: calc(6% - 12vw); --a: -18deg; opacity: 0.5; animation-delay: 0.45s, 3s; }
+    .beam--r1 { right: calc(6% - 12vw); --a: 34deg; }
+    .beam--r2 { right: calc(6% - 12vw); --a: 18deg; opacity: 0.5; animation-delay: 0.45s, 2.4s; }
+    @keyframes beamIn { from { opacity: 0; } }
+    @keyframes sway { from { rotate: -3deg; } to { rotate: 3deg; } }
+
+    .stadium__crowd {
+      position: absolute; left: -2%; width: 104%; top: 13%; height: 44%;
+      transform: translate(calc(var(--mx) * -10px), calc(var(--p) * 60px + var(--my) * -6px));
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+      opacity: 0.95;
+    }
+    .stadium__pitch {
+      position: absolute; left: -30%; right: -30%; bottom: -2%; height: 48%;
+      transform-origin: 50% 100%;
+      transform: perspective(520px) rotateX(60deg) translateY(calc(var(--p) * 40px));
+      background:
+        repeating-linear-gradient(90deg, #06180e 0 6.25%, #082013 6.25% 12.5%);
+      -webkit-mask-image: linear-gradient(0deg, #000 30%, transparent 96%);
+      mask-image: linear-gradient(0deg, #000 30%, transparent 96%);
+    }
+    .stadium__pitch svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .stadium__veil {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(48% 42% at 50% 52%, rgba(5, 7, 6, 0.72), transparent 75%),
+        linear-gradient(180deg, transparent 60%, var(--ink) 100%);
+    }
+    .stadium__grain {
+      position: absolute; inset: 0; opacity: 0.07; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    .hero-inner {
-      display: grid;
-      gap: 56px;
-      align-items: center;
+    .hero__content { position: relative; text-align: center; }
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px;
+      border: 1px solid rgba(0, 230, 118, 0.35); background: rgba(5, 7, 6, 0.55);
+      font-family: var(--f-mono); font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
+      animation: fadeUp 0.9s var(--ease) 0.2s both;
     }
-    @media (min-width: 1000px) {
-      .hero-inner { grid-template-columns: 1.15fr 0.85fr; gap: 64px; }
+    .hero__crest-wrap {
+      position: relative; width: clamp(210px, min(37.5vh, 72vw), 420px); margin: 4px auto 0;
+      transform: translateY(calc(var(--p) * -60px)) scale(calc(1 + var(--p) * 0.12));
+      opacity: calc(1 - var(--p) * 1.3);
+    }
+    .hero__crest-wrap::before {
+      content: ""; position: absolute; inset: 4%; z-index: -1;
+      background: radial-gradient(circle, rgba(0, 230, 118, 0.32), transparent 62%);
+      animation: halo 5s ease-in-out 1.6s infinite alternate;
+    }
+    @keyframes halo { from { opacity: 0.55; transform: scale(0.94); } to { opacity: 1; transform: scale(1.06); } }
+    .hero__logo {
+      display: block; width: 100%; height: auto; aspect-ratio: 1;
+      -webkit-mask-image: radial-gradient(closest-side, #000 60%, transparent 100%);
+      mask-image: radial-gradient(closest-side, #000 60%, transparent 100%);
+      animation: logoIn 1.4s var(--ease) 0.15s both;
+    }
+    @keyframes logoIn { from { opacity: 0; transform: translateY(18px) scale(0.9); filter: brightness(2) blur(8px); } }
+
+    .hero__title {
+      font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(44px, min(7.6vw, 11vh), 124px); line-height: 0.9; letter-spacing: 0.01em;
+      white-space: nowrap; margin-top: -1.5vh;
+    }
+    .hero__title .line { display: inline-block; overflow: hidden; padding: 0.02em 0.04em 0.05em; }
+    .hero__title .line > span { display: inline-block; animation: rise 1s var(--ease) 0.5s both; }
+    .hero__title .line--o > span {
+      color: transparent; -webkit-text-stroke: 2px var(--neon);
+      text-shadow: 0 0 46px rgba(0, 230, 118, 0.3);
+      animation-delay: 0.62s;
+    }
+    @keyframes rise { from { transform: translateY(105%); } }
+
+    .hero__tag {
+      margin-top: 14px; font-family: var(--f-display); font-weight: 800; text-transform: uppercase;
+      font-size: clamp(22px, 3vw, 34px); letter-spacing: 0.02em; line-height: 1.05;
+      animation: fadeUp 0.9s var(--ease) 0.9s both;
+    }
+    .hero__tag { text-wrap: balance; }
+    .hero__tag em { font-style: normal; color: var(--neon); }
+    .hero__sub {
+      max-width: 560px; margin: 12px auto 0; color: var(--fog); font-size: clamp(16px, 1.6vw, 18px);
+      animation: fadeUp 0.9s var(--ease) 1s both;
+    }
+    .hero__sub strong { color: var(--chalk); font-weight: 600; }
+    .hero__ctas {
+      display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 30px;
+      animation: fadeUp 0.9s var(--ease) 1.1s both;
+    }
+    @media (min-width: 560px) { .hero__ctas { flex-direction: row; justify-content: center; gap: 22px; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } }
+    @media (max-height: 780px) and (min-width: 900px) {
+      .hero__eyebrow { display: none; }
+      .hero__ctas { margin-top: 24px; }
     }
 
-    .live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 7px 14px 7px 10px;
-      border-radius: 999px;
-      background: var(--neon-dim);
-      border: 1px solid rgba(0, 230, 118, 0.3);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
+    /* ---------- Broadcast ticker ---------- */
+    .broadcast {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+      display: flex; height: 52px;
+      background: rgba(5, 7, 6, 0.88); border-top: 1px solid var(--line-2);
+      animation: slideUp 0.9s var(--ease) 1.25s both;
     }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--neon);
-      box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.6);
-      animation: pulse 1.8s infinite;
+    @keyframes slideUp { from { transform: translateY(100%); } }
+    .broadcast__label {
+      flex-shrink: 0; display: flex; align-items: center; gap: 10px;
+      padding: 0 30px 0 var(--gutter);
+      background: var(--neon); color: var(--on-neon);
+      clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+      font-family: var(--f-display); font-weight: 900; font-size: 18px; letter-spacing: 0.06em; text-transform: uppercase;
     }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.6); }
-      70% { box-shadow: 0 0 0 10px rgba(0, 230, 118, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+    .broadcast__label i { width: 7px; height: 7px; border-radius: 50%; background: var(--on-neon); animation: blink 1.2s steps(2, start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+    .broadcast__viewport {
+      flex: 1; overflow: hidden; display: flex; align-items: center;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 4%, #000 94%, transparent);
     }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: clamp(34px, 7.4vw, 58px);
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      text-transform: uppercase;
-      margin: 22px 0 22px;
+    .broadcast__track { display: flex; width: max-content; animation: marquee 42s linear infinite; }
+    .broadcast:hover .broadcast__track { animation-play-state: paused; }
+    .broadcast__item {
+      display: flex; align-items: center; gap: 22px; padding-left: 22px; white-space: nowrap;
+      font-family: var(--f-display); font-weight: 800; font-size: 19px; letter-spacing: 0.05em; text-transform: uppercase;
     }
-    .hero h1 .hl {
-      color: var(--neon);
-      font-style: italic;
-      text-shadow: 0 0 32px rgba(0, 230, 118, 0.35);
-    }
-    .hero h1 .stroke {
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
-    }
-
-    .hero-sub {
-      font-size: clamp(16px, 2.2vw, 19px);
-      color: var(--text-2);
-      max-width: 560px;
-    }
-    .hero-sub strong { color: var(--text); }
-    .hero-slogan {
-      display: block;
-      margin-top: 8px;
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 800;
-      color: var(--text);
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 34px;
-    }
-    @media (min-width: 520px) {
-      .hero-ctas { flex-direction: row; flex-wrap: wrap; }
-    }
-
-    .hero-proof {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 32px;
-      font-size: 14px;
-      color: var(--text-2);
-    }
-    .avatars { display: flex; }
-    .avatars i {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 2px solid var(--bg);
-      margin-left: -10px;
-      display: grid;
-      place-items: center;
-      font-style: normal;
-      font-size: 13px;
-      font-weight: 800;
-      color: #000;
-    }
-    .avatars i:first-child { margin-left: 0; }
-    .hero-proof b { color: var(--neon); }
-
-    /* Hero visual: Instagram profile mock */
-    .hero-visual { position: relative; max-width: 440px; width: 100%; margin: 0 auto; }
-
-    .ig-card {
-      position: relative;
-      background: linear-gradient(180deg, #1c1c1c, #151515);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.02) inset;
-      transform: rotate(-2deg);
-      transition: transform 0.6s var(--ease);
-    }
-    .hero-visual:hover .ig-card { transform: rotate(0deg) translateY(-4px); }
-
-    .ig-top { display: flex; align-items: center; gap: 16px; }
-    .ig-avatar {
-      width: 74px;
-      height: 74px;
-      border-radius: 50%;
-      padding: 3px;
-      background: conic-gradient(from 200deg, var(--neon), #00b0ff, var(--neon-2), var(--neon));
-      flex-shrink: 0;
-    }
-    .ig-avatar > div {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--bg);
-      display: grid;
-      place-items: center;
-    }
-    .ig-avatar svg { width: 40px; }
-    .ig-handle { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 6px; }
-    .ig-handle svg { width: 16px; height: 16px; color: var(--neon); }
-    .ig-name { font-size: 13px; color: var(--text-3); }
-
-    .ig-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      text-align: center;
-      margin: 20px 0 18px;
-      padding: 14px 0;
-      border-top: 1px solid var(--line-soft);
-      border-bottom: 1px solid var(--line-soft);
-    }
-    .ig-stats b { display: block; font-family: var(--font-display); font-weight: 900; font-size: 20px; }
-    .ig-stats span { font-size: 12px; color: var(--text-3); }
-
-    .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-radius: 12px; overflow: hidden; }
-    .ig-grid div {
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 11px;
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.1;
-      padding: 6px;
-    }
-    .ig-grid div:nth-child(1) { background: linear-gradient(135deg, #00E676, #00796b); color: #00130a; }
-    .ig-grid div:nth-child(2) { background: #232323; color: var(--neon); }
-    .ig-grid div:nth-child(3) { background: linear-gradient(135deg, #263238, #111); }
-    .ig-grid div:nth-child(4) { background: #1e1e1e; }
-    .ig-grid div:nth-child(5) { background: linear-gradient(135deg, #0d3b24, #00E676); color: #fff; }
-    .ig-grid div:nth-child(6) { background: #2a2a2a; color: var(--neon); }
-
-    .float-chip {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      background: rgba(26, 26, 26, 0.9);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--line);
-      font-size: 13px;
-      font-weight: 600;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-      animation: floaty 5s ease-in-out infinite;
-    }
-    .float-chip .ico {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      background: var(--neon-dim);
-      color: var(--neon);
-    }
-    .float-chip .ico svg { width: 18px; height: 18px; }
-    .float-chip small { display: block; color: var(--text-3); font-weight: 500; font-size: 11px; }
-    .chip-a { top: -18px; right: -6px; }
-    .chip-b { bottom: 28px; left: -14px; animation-delay: -2.5s; }
-    @media (min-width: 1000px) {
-      .chip-a { right: -36px; }
-      .chip-b { left: -48px; }
-    }
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+    .broadcast__item::after { content: "/"; font-family: var(--f-mono); font-size: 14px; color: var(--neon); }
+    @keyframes marquee { to { transform: translateX(-50%); } }
 
     /* =========================================================
-       TICKER
+       MANIFESTO — texto que acende com o scroll
        ========================================================= */
-    .ticker {
-      position: relative;
-      background: var(--neon);
-      color: #04140a;
-      overflow: hidden;
-      transform: skewY(-1.5deg);
-      margin: -6px 0;
-      z-index: 2;
-      box-shadow: 0 0 60px -10px rgba(0, 230, 118, 0.5);
+    .manifesto { padding: 120px 0 110px; position: relative; overflow: hidden; }
+    .manifesto__grid { display: grid; gap: 36px; align-items: center; }
+    @media (min-width: 1000px) { .manifesto__grid { grid-template-columns: 1.3fr 0.7fr; gap: 56px; } }
+    .manifesto__media { margin: 0 calc(var(--gutter) * -1); order: -1; }
+    @media (min-width: 1000px) { .manifesto__media { margin: 0; order: 0; } }
+    .manifesto__media img {
+      width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 40%;
+      transform: translateY(var(--mp, 0px));
+      -webkit-mask-image: radial-gradient(ellipse 58% 58% at 50% 50%, #000 52%, transparent 100%);
+      mask-image: radial-gradient(ellipse 58% 58% at 50% 50%, #000 52%, transparent 100%);
     }
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 38s linear infinite;
+    @media (min-width: 1000px) { .manifesto__media img { aspect-ratio: 4 / 5; } }
+    @media (min-width: 900px) { .manifesto { padding: 180px 0 160px; } }
+    .manifesto__label { font-family: var(--f-mono); font-weight: 600; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--neon); margin-bottom: 28px; }
+    .manifesto__text {
+      font-family: var(--f-body); font-weight: 700; letter-spacing: -0.025em;
+      font-size: clamp(28px, 4vw, 58px); line-height: 1.08; max-width: 1100px;
     }
-    .ticker-inner { transform: skewY(1.5deg); }
-    .ticker:hover .ticker-track { animation-play-state: paused; }
-    .ticker-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 28px;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      white-space: nowrap;
-    }
-    .ticker-item::after {
-      content: "";
-      width: 8px;
-      height: 8px;
-      background: #04140a;
-      transform: rotate(45deg);
-      margin-left: 14px;
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
+    .manifesto__text .word { color: rgba(242, 245, 240, 0.16); transition: color 0.35s; }
+    .manifesto__text .word.is-lit { color: var(--chalk); }
+    .manifesto__text .word.is-key.is-lit { color: var(--neon); }
+    .no-js .manifesto__text { color: var(--chalk); }
 
     /* =========================================================
-       STATS
+       NEWS — feed editorial
        ========================================================= */
-    .stats-grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: 1fr;
+    .news { padding: 96px 0 110px; background: var(--ink-2); border-top: 1px solid var(--line); position: relative; isolation: isolate; }
+    .news::before {
+      content: ""; position: absolute; inset: 0 0 auto 0; height: 620px; z-index: -1; opacity: 0.3;
+      background: center 58% / cover no-repeat;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.6) 45%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.6) 45%, transparent 100%);
     }
-    @media (min-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1000px) { .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
-
-    .stat-card {
-      position: relative;
-      padding: 28px 26px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform 0.35s var(--ease), border-color 0.35s, box-shadow 0.35s;
-    }
-    .stat-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(120% 80% at 100% 0%, rgba(0, 230, 118, 0.14), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-    .stat-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0, 230, 118, 0.5);
-      box-shadow: 0 24px 50px -24px rgba(0, 230, 118, 0.45);
-    }
-    .stat-card:hover::before { opacity: 1; }
-    .stat-card > * { position: relative; }
-
-    .stat-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: var(--neon-dim);
-      color: var(--neon);
-      margin-bottom: 22px;
-    }
-    .stat-icon svg { width: 24px; height: 24px; }
-
-    .stat-value {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: clamp(40px, 6vw, 54px);
-      line-height: 1;
-      letter-spacing: -0.03em;
-      font-variant-numeric: tabular-nums;
-    }
-    .stat-value .plus, .stat-value .suf { color: var(--neon); }
-    .stat-value.word { font-size: clamp(32px, 4.6vw, 42px); font-style: italic; }
-    .stat-label { margin-top: 10px; font-weight: 600; font-size: 15px; }
-    .stat-desc { margin-top: 4px; font-size: 13.5px; color: var(--text-3); }
-
-    /* =========================================================
-       NEWS
-       ========================================================= */
-    #noticias { background: var(--bg-2); }
+    .news.bg-ready::before, .no-js .news::before { background-image: url("assets/velocidade.jpg"); }
+    @media (min-width: 900px) { .news { padding: 130px 0 140px; } }
+    .news__head { display: grid; gap: 28px; margin-bottom: 44px; }
+    @media (min-width: 1000px) { .news__head { grid-template-columns: 1fr auto; align-items: end; } }
 
     .filters {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      margin-top: 24px;
-      scrollbar-width: none;
+      display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+      border-bottom: 1px solid var(--line); margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter);
     }
     .filters::-webkit-scrollbar { display: none; }
-    @media (min-width: 900px) { .filters { margin-top: 0; } }
+    @media (min-width: 1000px) { .filters { margin: 0; padding: 0; } }
+    .filter {
+      position: relative; flex-shrink: 0; min-height: 46px; padding: 0 14px;
+      background: none; border: 0; cursor: pointer;
+      font-family: var(--f-display); font-weight: 800; font-size: 18px; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--fog-2); transition: color 0.2s;
+    }
+    .filter::after {
+      content: ""; position: absolute; left: 10px; right: 10px; bottom: -1px; height: 3px;
+      background: var(--neon); transform: scaleX(0); transition: transform 0.35s var(--ease);
+    }
+    .filter:hover { color: var(--chalk); }
+    .filter[aria-pressed="true"] { color: var(--chalk); }
+    .filter[aria-pressed="true"]::after { transform: scaleX(1); }
 
-    .filter-btn {
-      flex-shrink: 0;
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--card);
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--text-2);
-      cursor: pointer;
-      transition: all 0.2s;
+    .feed { display: grid; gap: 18px; }
+    @media (min-width: 1000px) {
+      .feed { grid-template-columns: 1.35fr 1fr; gap: 24px; }
+      .story--lead { grid-row: span 3; }
+      .feed.is-filtered { grid-template-columns: 1fr; }
+      .feed.is-filtered .story--lead { grid-row: auto; }
     }
-    .filter-btn:hover { color: var(--text); border-color: #444; }
-    .filter-btn.active { background: var(--neon); color: #04140a; border-color: var(--neon); }
+    .story { animation: storyIn 0.5s var(--ease) both; }
+    .story[hidden] { display: none; }
+    @keyframes storyIn { from { opacity: 0; transform: translateY(12px); } }
 
-    .news-grid {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: 1fr;
+    .story__link {
+      --x: 50%; --y: 50%;
+      position: relative; display: block; height: 100%; overflow: hidden;
+      background: var(--ink); border: 1px solid var(--line);
+      transition: border-color 0.3s;
     }
-    @media (min-width: 640px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1100px) { .news-grid { grid-template-columns: repeat(4, 1fr); } }
-
-    .news-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform 0.35s var(--ease), border-color 0.35s, box-shadow 0.35s, opacity 0.3s;
+    .story__link::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+      background: radial-gradient(320px circle at var(--x) var(--y), rgba(0, 230, 118, 0.14), transparent 70%);
+      transition: opacity 0.3s;
     }
-    .news-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0, 230, 118, 0.45);
-      box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 230, 118, 0.15);
-    }
-    .news-card.hidden { display: none; }
-
-    .news-thumb {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: #111;
-    }
-    .news-thumb .art {
-      position: absolute;
-      inset: 0;
-      transition: transform 0.6s var(--ease);
-    }
-    .news-card:hover .news-thumb .art { transform: scale(1.07); }
-    .news-thumb::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.55));
-    }
-    .art-1 { background: radial-gradient(circle at 70% 30%, #00E676 0, #00794a 35%, #062a19 75%); }
-    .art-2 { background: linear-gradient(135deg, #f9d71c 0%, #1fa34a 55%, #0b3d91 100%); }
-    .art-3 { background: linear-gradient(160deg, #1b1b1b 0%, #0b2a1a 60%, #00E676 140%); }
-    .art-4 { background: radial-gradient(circle at 20% 80%, #0091ea 0, #102a43 45%, #0b0b0b 85%); }
-    .news-thumb svg.motif {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
+    .story__link:hover { border-color: rgba(0, 230, 118, 0.5); }
+    .story__link:hover::after { opacity: 1; }
+    .story__media { position: relative; overflow: hidden; background: var(--turf); }
+    .story__art { width: 100%; height: 100%; transition: transform 0.8s var(--ease); }
+    .story__link:hover .story__art { transform: scale(1.06); }
 
     .tag {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      z-index: 2;
-      padding: 5px 11px;
-      border-radius: 999px;
-      background: rgba(10, 10, 10, 0.78);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(0, 230, 118, 0.45);
-      color: var(--neon);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      display: inline-block; padding: 4px 8px;
+      font-family: var(--f-mono); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--neon); color: var(--on-neon);
     }
+    .story__meta {
+      font-family: var(--f-mono); font-size: 12px; color: var(--fog-2); letter-spacing: 0.02em;
+    }
+    .story__cta {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+      font-family: var(--f-display); font-weight: 800; font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--neon);
+    }
+    .story__cta svg { width: 16px; height: 16px; transition: transform 0.3s var(--ease); }
+    .story__link:hover .story__cta svg { transform: translateX(5px); }
 
-    .news-body {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      padding: 20px 20px 22px;
+    /* Lead story */
+    .story--lead .story__link { display: flex; flex-direction: column; justify-content: flex-end; min-height: 500px; }
+    @media (min-width: 1000px) { .story--lead .story__link { min-height: 620px; } }
+    .story--lead .story__media { position: absolute; inset: 0; }
+    .story--lead .story__media::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(5, 7, 6, 0) 25%, rgba(5, 7, 6, 0.75) 60%, rgba(5, 7, 6, 0.96) 100%);
     }
-    .news-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12.5px;
-      color: var(--text-3);
-      margin-bottom: 10px;
+    .story--lead .story__body { position: relative; z-index: 1; padding: 24px; }
+    @media (min-width: 640px) { .story--lead .story__body { padding: 36px; } }
+    .story--lead .story__title {
+      margin: 16px 0 12px; font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(34px, 4.2vw, 56px); line-height: 0.98; max-width: 16ch;
     }
-    .news-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-3); }
-    .news-card h3 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 18px;
-      line-height: 1.25;
-      margin-bottom: 10px;
+    .story--lead .story__dek { color: var(--fog); max-width: 52ch; margin-bottom: 14px; }
+
+    /* List stories */
+    .story--item .story__link { display: grid; grid-template-columns: 112px 1fr; gap: 16px; padding: 12px; align-items: center; }
+    @media (min-width: 640px) { .story--item .story__link { grid-template-columns: 200px 1fr; gap: 22px; padding: 14px; } }
+    .story--item .story__media { aspect-ratio: 1; }
+    @media (min-width: 640px) { .story--item .story__media { aspect-ratio: 4 / 3; } }
+    .story--item .story__kicker { font-family: var(--f-mono); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); }
+    .story--item .story__title {
+      margin: 6px 0 8px; font-weight: 700; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.25; letter-spacing: -0.01em;
       transition: color 0.2s;
     }
-    .news-card:hover h3 { color: var(--neon); }
-    .news-card p { font-size: 14.5px; color: var(--text-2); flex: 1; }
-    .read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 18px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--neon);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .read-more svg { width: 16px; height: 16px; transition: transform 0.25s var(--ease); }
-    .news-card:hover .read-more svg { transform: translateX(4px); }
+    .story--item .story__link:hover .story__title { color: var(--neon); }
+    .story--item .story__dek { display: none; color: var(--fog); font-size: 14.5px; margin-bottom: 8px; }
+    @media (min-width: 640px) { .story--item .story__dek { display: block; } }
+    .feed.is-filtered .story--item .story__link { grid-template-columns: 112px 1fr; }
+    @media (min-width: 640px) { .feed.is-filtered .story--item .story__link { grid-template-columns: 280px 1fr; } }
+
+    .news__more { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+    .news__more p { color: var(--fog); }
 
     /* =========================================================
-       ANALYSIS (tactical board)
+       ANÁLISES — o jogo além do placar
        ========================================================= */
     .analysis {
-      display: grid;
-      gap: 40px;
-      align-items: center;
+      position: relative; padding: 90px 0 120px; overflow-x: clip;
+      background:
+        radial-gradient(60% 40% at 80% 30%, rgba(0, 230, 118, 0.1), transparent 70%),
+        linear-gradient(180deg, var(--ink) 0%, var(--turf) 30%, var(--turf) 80%, var(--ink) 100%);
     }
-    @media (min-width: 1000px) { .analysis { grid-template-columns: 1fr 1fr; gap: 72px; } }
+    @media (min-width: 900px) { .analysis { padding: 120px 0 160px; } }
+
+    .analysis { isolation: isolate; }
+    .analysis__hand {
+      position: absolute; z-index: -1; left: -6%; top: 160px; width: min(680px, 80vw); height: auto; aspect-ratio: 1;
+      opacity: 0.3; mix-blend-mode: screen; pointer-events: none;
+      -webkit-mask-image: radial-gradient(closest-side at 46% 54%, #000 40%, transparent 100%);
+      mask-image: radial-gradient(closest-side at 46% 54%, #000 40%, transparent 100%);
+    }
+    .bigline { overflow: hidden; margin-bottom: 56px; pointer-events: none; user-select: none; }
+    .bigline__track {
+      display: flex; width: max-content; gap: 0.4em;
+      transform: translateX(var(--shift, 0px));
+      font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(80px, 15vw, 220px); line-height: 0.9; white-space: nowrap;
+      color: transparent; -webkit-text-stroke: 1px rgba(242, 245, 240, 0.14);
+    }
+    .bigline__track b { color: transparent; -webkit-text-stroke: 1px rgba(0, 230, 118, 0.45); font-weight: 900; }
+
+    .analysis__grid { display: grid; gap: 32px; }
+    @media (min-width: 1000px) { .analysis__grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; } }
+    .analysis__intro { margin-bottom: 8px; }
+
+    .board-wrap { position: sticky; top: calc(var(--header-h) + 8px); z-index: 2; }
+    @media (min-width: 1000px) { .board-wrap { top: calc(var(--header-h) + 7vh); grid-column: 2; grid-row: 1 / span 2; } }
+    @media (max-height: 620px) and (max-width: 999px) { .board-wrap { position: relative; top: 0; } }
 
     .board {
-      position: relative;
-      background: linear-gradient(180deg, #0f3d26, #0a2a1a);
-      border-radius: 20px;
-      border: 1px solid rgba(0, 230, 118, 0.25);
-      padding: 18px;
-      box-shadow: 0 40px 80px -40px rgba(0, 230, 118, 0.35);
-      overflow: hidden;
+      position: relative; background: #06190f; border: 1px solid rgba(0, 230, 118, 0.3);
+      box-shadow: 0 40px 90px -40px rgba(0, 230, 118, 0.35);
     }
-    .board::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 40px, transparent 40px 80px);
+    .board__bar {
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      padding: 10px 14px; border-bottom: 1px solid rgba(0, 230, 118, 0.2);
+      font-family: var(--f-mono); font-weight: 600; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
     }
-    .board svg { position: relative; width: 100%; height: auto; }
-    .board .player { transition: transform 0.4s var(--ease); transform-box: fill-box; transform-origin: center; }
-    .board:hover .player { transform: scale(1.12); }
-    .board-label {
-      position: absolute;
-      top: 28px;
-      left: 28px;
-      z-index: 2;
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.55);
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      color: var(--neon);
+    .board__label { color: var(--neon); transition: opacity 0.25s; }
+    .board__src { color: var(--fog-2); display: none; }
+    @media (min-width: 480px) { .board__src { display: inline; } }
+    .board svg { width: 100%; height: auto; }
+    .pl { transition: transform 0.9s var(--ease); }
+    .pl circle { transition: r 0.3s; }
+    .ov { opacity: 0; transition: opacity 0.6s var(--ease); }
+    .board[data-state="tatico"] .ov--tatico,
+    .board[data-state="dados"] .ov--dados,
+    .board[data-state="opiniao"] .ov--opiniao { opacity: 1; }
+    .run { stroke-dasharray: 7 6; animation: dash 1.4s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -26; } }
+    .board__tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(0, 230, 118, 0.2); }
+    .board__tab {
+      min-height: 46px; padding: 6px; background: none; border: 0; cursor: pointer;
+      font-family: var(--f-display); font-weight: 800; font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--fog); border-right: 1px solid rgba(0, 230, 118, 0.15); transition: color 0.2s, background 0.2s;
     }
-    .run-line { stroke-dasharray: 6 6; animation: dash 1.6s linear infinite; }
-    @keyframes dash { to { stroke-dashoffset: -24; } }
+    .board__tab:last-child { border-right: 0; }
+    .board__tab:hover { color: var(--chalk); }
+    .board__tab[aria-pressed="true"] { background: var(--neon); color: var(--on-neon); }
 
-    .check-list { list-style: none; display: grid; gap: 14px; margin: 28px 0 32px; }
-    .check-list li { display: flex; gap: 14px; align-items: flex-start; color: var(--text-2); }
-    .check-list li b { color: var(--text); display: block; font-size: 16px; }
-    .check {
-      flex-shrink: 0;
-      width: 26px;
-      height: 26px;
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      background: var(--neon-dim);
-      color: var(--neon);
-      margin-top: 1px;
+    .lenses { display: grid; }
+    .lens { padding: 48px 0; border-top: 1px solid var(--line); opacity: 0.32; transition: opacity 0.5s var(--ease); }
+    .lens:first-child { border-top: 0; }
+    .lens.is-active { opacity: 1; }
+    @media (min-width: 1000px) {
+      .lens { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; padding: 0; }
     }
-    .check svg { width: 15px; height: 15px; }
+    .lens__tag { font-family: var(--f-mono); font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--neon); }
+    .lens h3 {
+      margin: 10px 0 14px; font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(36px, 4.4vw, 62px); line-height: 0.96;
+    }
+    .lens p { color: var(--fog); font-size: 17px; max-width: 44ch; }
+    .analysis__cta { margin-top: 40px; }
 
     /* =========================================================
-       MEDIA KIT / PARTNERSHIPS
+       COMUNIDADE — a torcida
        ========================================================= */
-    #parcerias {
-      background:
-        radial-gradient(60% 50% at 0% 0%, rgba(0, 230, 118, 0.09), transparent 70%),
-        var(--bg-2);
-      border-top: 1px solid var(--line-soft);
-      border-bottom: 1px solid var(--line-soft);
+    .community { padding: 110px 0 120px; position: relative; isolation: isolate; overflow: hidden; }
+    .community::before {
+      content: ""; position: absolute; inset: 0 0 auto 0; height: min(820px, 80%); z-index: -1; opacity: 0.34;
+      background: 62% 40% / cover no-repeat;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 16%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 16%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
     }
+    .community.bg-ready::before, .no-js .community::before { background-image: url("assets/torcida-estadio.jpg"); }
+    @media (min-width: 900px) { .community { padding: 150px 0 160px; } }
+    .community__grid { display: grid; gap: 48px; margin-top: 48px; }
+    @media (min-width: 1000px) { .community__grid { grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; } }
 
-    .benefits {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: 1fr;
+    .stand { position: relative; }
+    .stand canvas { width: 100%; }
+    .stand__count {
+      display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap;
+      margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line);
     }
-    @media (min-width: 640px) { .benefits { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1100px) { .benefits { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+    .stand__num {
+      font-family: var(--f-display); font-weight: 900; line-height: 0.8; letter-spacing: -0.01em;
+      font-size: clamp(96px, 16vw, 200px); font-variant-numeric: tabular-nums;
+    }
+    .stand__num .plus, .stand__num .suf { color: var(--neon); }
+    .stand__caption { color: var(--fog); font-size: 15px; max-width: 26ch; padding-bottom: 10px; }
+    .stand__caption b { color: var(--chalk); font-weight: 600; display: block; }
 
-    .benefit {
-      position: relative;
-      padding: 28px 24px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      transition: transform 0.35s var(--ease), border-color 0.35s, background 0.35s;
+    .tally { border-top: 2px solid var(--neon); }
+    .tally__title {
+      display: flex; justify-content: space-between; padding: 12px 0;
+      font-family: var(--f-mono); font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fog);
+      border-bottom: 1px solid var(--line);
     }
-    .benefit:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0, 230, 118, 0.5);
-      background: var(--card-2);
+    .tally__row {
+      display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center;
+      padding: 18px 0; border-bottom: 1px solid var(--line);
     }
-    .benefit .num {
-      position: absolute;
-      top: 20px;
-      right: 22px;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 40px;
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-      transition: -webkit-text-stroke-color 0.35s;
+    .tally__row dt { font-weight: 600; font-size: 16px; }
+    .tally__row dt small { display: block; font-weight: 400; color: var(--fog); font-size: 14px; }
+    .tally__row dd {
+      font-family: var(--f-display); font-weight: 900; font-size: clamp(38px, 4.4vw, 56px); line-height: 1;
+      text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap;
     }
-    .benefit:hover .num { -webkit-text-stroke-color: rgba(0, 230, 118, 0.5); }
-    .benefit h3 { font-family: var(--font-display); font-weight: 800; font-size: 18px; margin: 18px 0 8px; }
-    .benefit p { font-size: 14.5px; color: var(--text-2); }
+    .tally__row dd .acc { color: var(--neon); }
+    .tally__row dd.word { font-size: clamp(28px, 3.2vw, 40px); }
 
-    .formats {
-      margin-top: 48px;
-      display: grid;
-      gap: 16px;
-      grid-template-columns: 1fr;
+    .igstrip {
+      display: flex; align-items: center; gap: 14px; margin-top: 28px; padding: 14px;
+      border: 1px solid var(--line-2); transition: border-color 0.3s, background 0.3s;
     }
-    @media (min-width: 800px) { .formats { grid-template-columns: repeat(3, 1fr); } }
-
-    .format {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      padding: 18px 20px;
-      border-radius: var(--radius-sm);
-      border: 1px dashed rgba(0, 230, 118, 0.35);
-      background: rgba(0, 230, 118, 0.03);
-      transition: background 0.3s, border-style 0.3s;
+    .igstrip:hover { border-color: var(--neon); background: rgba(0, 230, 118, 0.05); }
+    .igstrip__avatar {
+      width: 52px; height: 52px; border-radius: 50%; padding: 2px; flex-shrink: 0;
+      background: conic-gradient(from 200deg, var(--neon), #0ab36a, var(--neon-hi), var(--neon));
     }
-    .format:hover { background: rgba(0, 230, 118, 0.08); border-style: solid; }
-    .format .stat-icon { margin: 0; flex-shrink: 0; }
-    .format b { display: block; font-family: var(--font-display); font-weight: 800; }
-    .format span { font-size: 13.5px; color: var(--text-3); }
-
-    .kit-cta {
-      margin-top: 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding: 28px;
-      border-radius: 20px;
-      background: linear-gradient(120deg, var(--neon) 0%, #00c853 100%);
-      color: #04140a;
-      position: relative;
-      overflow: hidden;
+    .igstrip__avatar span { display: block; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: var(--ink); }
+    .igstrip__avatar img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.45); }
+    .igstrip__id { display: grid; line-height: 1.3; min-width: 0; }
+    .igstrip__id b { font-weight: 700; overflow: hidden; text-overflow: ellipsis; }
+    .igstrip__id small { color: var(--fog); font-size: 13px; }
+    .igstrip__btn {
+      margin-left: auto; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
+      font-family: var(--f-display); font-weight: 800; font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--neon);
     }
-    .kit-cta::after {
-      content: "TDF";
-      position: absolute;
-      right: -10px;
-      bottom: -40px;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-style: italic;
-      font-size: 180px;
-      line-height: 1;
-      color: rgba(0, 0, 0, 0.08);
-      pointer-events: none;
-    }
-    .kit-cta h3 { font-family: var(--font-display); font-weight: 900; font-size: clamp(22px, 3.4vw, 30px); line-height: 1.1; text-transform: uppercase; }
-    .kit-cta p { font-weight: 500; margin-top: 6px; }
-    .kit-cta .btn { background: #0f0f0f; color: var(--neon); position: relative; z-index: 1; }
-    .kit-cta .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.6); }
-    @media (min-width: 800px) {
-      .kit-cta { flex-direction: row; align-items: center; padding: 36px 44px; }
-    }
+    .igstrip__btn svg { width: 16px; height: 16px; transition: transform 0.3s var(--ease); }
+    .igstrip:hover .igstrip__btn svg { transform: translateX(4px); }
 
     /* =========================================================
-       CONTACT FORM
+       CONTATO COMERCIAL — único espaço comercial do site
        ========================================================= */
-    .contact {
-      display: grid;
-      gap: 40px;
-    }
-    @media (min-width: 1000px) { .contact { grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start; } }
+    .contact { padding: 100px 0 110px; background: var(--ink-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    @media (min-width: 900px) { .contact { padding: 130px 0 140px; } }
+    .contact__grid { display: grid; gap: 44px; }
+    @media (min-width: 1000px) { .contact__grid { grid-template-columns: 0.85fr 1.15fr; gap: 72px; align-items: start; } }
+    .contact .sec-title { font-size: clamp(44px, 6.4vw, 88px); }
 
-    .contact-aside .direct-links { display: grid; gap: 12px; margin-top: 28px; }
-    .direct-link {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 18px;
-      border-radius: 14px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      transition: border-color 0.3s, transform 0.3s var(--ease);
+    .channels { margin-top: 32px; border-top: 1px solid var(--line); }
+    .channel {
+      display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 12px 0;
+      border-bottom: 1px solid var(--line); transition: padding 0.3s var(--ease), color 0.2s;
     }
-    .direct-link:hover { border-color: var(--neon); transform: translateX(4px); }
-    .direct-link .stat-icon { margin: 0; width: 42px; height: 42px; }
-    .direct-link b { display: block; font-size: 15px; }
-    .direct-link span { font-size: 13px; color: var(--text-3); }
-    .direct-link .arrow-end { margin-left: auto; color: var(--text-3); width: 18px; height: 18px; }
+    .channel:hover { padding-left: 8px; color: var(--neon); }
+    .channel__ico { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line-2); color: var(--neon); flex-shrink: 0; }
+    .channel__ico svg { width: 20px; height: 20px; }
+    .channel b { display: block; font-weight: 600; }
+    .channel small { color: var(--fog); font-size: 13.5px; }
+    .channel__arrow { margin-left: auto; width: 18px; height: 18px; color: var(--fog-2); }
 
-    .form-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 24px;
-    }
-    @media (min-width: 640px) { .form-card { padding: 36px; } }
+    .form { border: 1px solid var(--line-2); background: var(--ink); padding: 24px; }
+    @media (min-width: 640px) { .form { padding: 40px; } }
+    .form__grid { display: grid; gap: 26px; }
+    @media (min-width: 640px) { .form__grid { grid-template-columns: 1fr 1fr; } .form__grid .full { grid-column: 1 / -1; } }
 
-    .form-grid { display: grid; gap: 18px; }
-    @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } .form-grid .full { grid-column: 1 / -1; } }
-
-    .field label, .field .legend {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-2);
-      margin-bottom: 8px;
+    .field label, .field legend {
+      display: block; margin-bottom: 6px;
+      font-family: var(--f-mono); font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fog);
+      transition: color 0.2s;
     }
-    .field label .req { color: var(--neon); }
-    .field input,
-    .field textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: 12px;
-      background: #121212;
-      border: 1px solid var(--line);
-      font-size: 15px;
-      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    .field .req { color: var(--neon); }
+    .field input, .field textarea {
+      width: 100%; padding: 10px 0 12px; background: transparent;
+      border: 0; border-bottom: 1px solid var(--line-2); border-radius: 0;
+      font-size: 17px; transition: border-color 0.2s;
     }
-    .field textarea { min-height: 130px; resize: vertical; }
-    .field input::placeholder, .field textarea::placeholder { color: #5a5a5a; }
-    .field input:focus, .field textarea:focus {
-      outline: none;
-      border-color: var(--neon);
-      background: #141414;
-      box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.12);
-    }
-    .field.invalid input, .field.invalid textarea { border-color: #ff5252; }
-    .field .err { display: none; color: #ff6e6e; font-size: 12.5px; margin-top: 6px; }
+    .field textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+    .field input::placeholder, .field textarea::placeholder { color: #59625b; }
+    .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--neon); box-shadow: 0 1px 0 var(--neon); }
+    .field:focus-within label { color: var(--neon); }
+    .field.invalid input, .field.invalid textarea { border-bottom-color: #ff6b6b; }
+    .field .err { display: none; color: #ff8a8a; font-size: 13px; margin-top: 6px; }
     .field.invalid .err { display: block; }
+    fieldset.field { border: 0; min-width: 0; }
 
-    .chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 6px; }
     @media (min-width: 640px) { .chips { grid-template-columns: repeat(4, 1fr); } }
-    fieldset.field { min-width: 0; padding: 0; }
     .chip { position: relative; }
-    .chip input { position: absolute; inset: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .chip input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
     .chip span {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding: 14px 8px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #121212;
-      font-size: 13px;
-      font-weight: 600;
-      text-align: center;
-      color: var(--text-2);
-      cursor: pointer;
-      transition: all 0.2s;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      min-height: 76px; padding: 10px 6px; border: 1px solid var(--line-2); cursor: pointer; text-align: center;
+      font-size: 13.5px; font-weight: 600; color: var(--fog); transition: all 0.2s;
     }
     .chip span svg { width: 22px; height: 22px; }
-    .chip span:hover { border-color: #444; color: var(--text); }
-    .chip input:checked + span {
-      border-color: var(--neon);
-      background: var(--neon-dim);
-      color: var(--neon);
-      box-shadow: 0 0 0 1px var(--neon) inset;
-    }
-    .chip input:focus-visible + span { outline: 2px solid var(--neon); outline-offset: 2px; }
+    .chip span:hover { color: var(--chalk); border-color: rgba(242, 245, 240, 0.4); }
+    .chip input:checked + span { border-color: var(--neon); background: rgba(0, 230, 118, 0.1); color: var(--neon); box-shadow: inset 0 0 0 1px var(--neon); }
+    .chip input:focus-visible + span { outline: 2px solid var(--neon); outline-offset: 3px; }
 
-    .form-actions { display: grid; gap: 12px; margin-top: 26px; }
-    @media (min-width: 640px) { .form-actions { grid-template-columns: 1fr 1fr; } }
-    .form-note { margin-top: 14px; font-size: 12.5px; color: var(--text-3); text-align: center; }
+    .form__actions { display: grid; gap: 14px; margin-top: 32px; }
+    @media (min-width: 640px) { .form__actions { grid-template-columns: 1fr 1fr; } }
+    .form__note { margin-top: 16px; font-size: 13px; color: var(--fog-2); text-align: center; }
 
-    .btn-wa { border-color: #25D366; color: #25D366; }
-    .btn-wa:hover { background: #25D366; color: #04140a; transform: translateY(-2px); }
-
-    /* Toast */
     .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 24px;
-      z-index: 200;
-      transform: translate(-50%, 140%);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      width: calc(100% - 32px);
-      max-width: 440px;
-      padding: 16px 18px;
-      border-radius: 14px;
-      background: #1c1c1c;
-      border: 1px solid var(--neon);
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px -10px rgba(0, 230, 118, 0.5);
-      font-size: 14px;
-      transition: transform 0.45s var(--ease);
+      position: fixed; left: 50%; bottom: 20px; z-index: 200;
+      display: flex; align-items: center; gap: 12px;
+      width: calc(100% - 32px); max-width: 460px; padding: 16px 18px;
+      background: #0d130f; border: 1px solid var(--neon);
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.85), 0 0 30px -10px rgba(0, 230, 118, 0.5);
+      font-size: 14.5px; transform: translate(-50%, 160%); transition: transform 0.45s var(--ease);
     }
     .toast.show { transform: translate(-50%, 0); }
-    .toast .stat-icon { margin: 0; width: 36px; height: 36px; flex-shrink: 0; }
+    .toast svg { width: 22px; height: 22px; color: var(--neon); flex-shrink: 0; }
+
+    /* =========================================================
+       FIM DE JOGO — placar "End"
+       ========================================================= */
+    .final {
+      --fp: 1;
+      position: relative; overflow: hidden; isolation: isolate;
+      min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: center;
+      padding: 120px 0 170px; text-align: center; background: #020403;
+    }
+    .final__glow {
+      position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(50% 38% at 50% 34%, rgba(0, 230, 118, calc(0.08 + var(--fp) * 0.14)), transparent 72%),
+        radial-gradient(70% 30% at 50% 108%, rgba(0, 230, 118, 0.12), transparent 70%);
+    }
+    .final__inner { position: relative; width: 100%; }
+    .final__kicker {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--f-mono); font-weight: 600; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fog);
+    }
+    .final__kicker .live-dot { animation: none; }
+
+    .led-wrap { margin: 14px auto 0; max-width: 980px; }
+    .final__screen {
+      position: relative; margin: 0;
+      transform: scale(calc(1.16 - var(--fp) * 0.16));
+    }
+    .final__screen img {
+      display: block; width: 100%; height: clamp(220px, 36vw, 450px); object-fit: cover; object-position: 48% 47%;
+      mix-blend-mode: screen;
+      -webkit-mask-image: radial-gradient(ellipse 50% 50% at 48% 50%, #000 48%, transparent 100%);
+      mask-image: radial-gradient(ellipse 50% 50% at 48% 50%, #000 48%, transparent 100%);
+      opacity: 0; filter: brightness(1.8) blur(10px);
+      transition: opacity 1.4s var(--ease), filter 1.8s var(--ease);
+    }
+    .final__screen.is-on img { opacity: 1; filter: none; animation: flicker 7s steps(1) 2s infinite; }
+    .no-js .final__screen img { opacity: 1; filter: none; }
+    .final__screen::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 4px);
+      -webkit-mask-image: radial-gradient(ellipse 50% 50% at 48% 50%, #000 40%, transparent 100%);
+      mask-image: radial-gradient(ellipse 50% 50% at 48% 50%, #000 40%, transparent 100%);
+    }
+    @keyframes flicker { 0%, 100% { opacity: 1; } 47% { opacity: 0.72; } 48% { opacity: 1; } 82% { opacity: 0.86; } 83% { opacity: 1; } }
+    .led-floor {
+      height: 60px; margin: 0 auto; max-width: 820px;
+      background: radial-gradient(50% 100% at 50% 0%, rgba(0, 230, 118, calc(var(--fp) * 0.22)), transparent 70%);
+    }
+
+    .final__title {
+      margin-top: 10px; font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(50px, 9.6vw, 140px); line-height: 0.98;
+    }
+    .final__title span { display: block; }
+    .final__title .o { -webkit-text-stroke: 2px var(--neon); text-shadow: 0 0 50px rgba(0, 230, 118, 0.25); }
+    .final__sub { margin: 22px auto 34px; color: var(--fog); font-size: clamp(17px, 1.8vw, 20px); }
 
     /* =========================================================
        FOOTER
        ========================================================= */
-    .footer {
-      padding: 64px 0 28px;
-      border-top: 1px solid var(--line-soft);
-      background: #0a0a0a;
+    .footer { position: relative; z-index: 1; background: #030504; border-top: 1px solid rgba(0, 230, 118, 0.35); padding: 96px 0 28px; }
+    .footer__circle {
+      position: absolute; left: 50%; top: 0; width: 180px; height: 180px; transform: translate(-50%, -50%);
+      pointer-events: none;
     }
-    .footer-top {
-      display: grid;
-      gap: 40px;
-      grid-template-columns: 1fr;
+    @media (min-width: 768px) { .footer__circle { width: 240px; height: 240px; } }
+    .footer__top { display: grid; gap: 40px; }
+    @media (min-width: 760px) { .footer__top { grid-template-columns: 1.5fr 1fr 1fr; } }
+    .footer__brand .brand { margin: 0; }
+    .footer__slogan { margin-top: 18px; font-family: var(--f-display); font-weight: 800; font-size: 22px; text-transform: uppercase; line-height: 1.05; }
+    .footer__slogan em { font-style: normal; color: var(--neon); }
+    .footer__desc { margin-top: 10px; color: var(--fog); font-size: 14.5px; max-width: 36ch; }
+    .footer h2 {
+      margin-bottom: 14px; font-family: var(--f-mono); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--neon);
     }
-    @media (min-width: 700px) { .footer-top { grid-template-columns: 1.4fr 1fr 1fr; } }
-    .footer-brand p { color: var(--text-3); margin-top: 16px; max-width: 340px; font-size: 14.5px; }
-    .footer-brand .slogan { font-family: var(--font-display); font-style: italic; font-weight: 800; color: var(--text); margin-top: 10px; }
-    .footer h4 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--neon);
-      margin-bottom: 16px;
-    }
-    .footer ul { list-style: none; display: grid; gap: 10px; }
-    .footer ul a { color: var(--text-2); font-size: 14.5px; transition: color 0.2s, padding 0.2s; }
-    .footer ul a:hover { color: var(--neon); padding-left: 4px; }
-
-    .socials { display: flex; gap: 10px; margin-top: 4px; }
+    .footer__links { display: grid; gap: 4px; }
+    .footer__links a { display: inline-block; padding: 6px 0; color: var(--fog); transition: color 0.2s, transform 0.25s var(--ease); }
+    .footer__links a:hover { color: var(--chalk); transform: translateX(4px); }
+    .socials { display: flex; gap: 10px; }
     .social {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: var(--card);
-      border: 1px solid var(--line);
-      color: var(--text-2);
-      transition: all 0.25s var(--ease);
+      width: 46px; height: 46px; display: grid; place-items: center;
+      border: 1px solid var(--line-2); color: var(--fog); transition: all 0.25s var(--ease);
     }
     .social svg { width: 20px; height: 20px; }
-    .social:hover { color: #04140a; background: var(--neon); border-color: var(--neon); transform: translateY(-3px); }
-    .ig-follow { display: inline-flex; flex-direction: column; margin-top: 14px; font-size: 14px; color: var(--text-2); }
-    .ig-follow b { color: var(--text); }
+    .social:hover { background: var(--neon); border-color: var(--neon); color: var(--on-neon); transform: translateY(-3px); }
+    .footer__handle { display: inline-block; margin-top: 14px; color: var(--fog); font-size: 14px; }
+    .footer__handle b { color: var(--chalk); }
+    .footer__handle:hover b { color: var(--neon); }
 
-    .footer-bottom {
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      justify-content: space-between;
-      font-size: 13px;
-      color: var(--text-3);
+    .footer__bottom {
+      margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line);
+      display: flex; flex-direction: column; gap: 12px;
+      font-size: 13.5px; color: var(--fog-2);
     }
-    @media (min-width: 700px) { .footer-bottom { flex-direction: row; align-items: center; } }
-    .to-top { display: inline-flex; align-items: center; gap: 6px; color: var(--text-2); font-weight: 600; }
+    @media (min-width: 860px) { .footer__bottom { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; } }
+    .credit a {
+      color: var(--fog); font-weight: 600;
+      background: linear-gradient(var(--neon), var(--neon)) 0 100% / 0 1px no-repeat;
+      padding-bottom: 2px; transition: color 0.25s, background-size 0.35s var(--ease);
+    }
+    .credit a:hover, .credit a:focus-visible { color: var(--neon); background-size: 100% 1px; }
+    .to-top { display: inline-flex; align-items: center; gap: 6px; color: var(--fog); font-weight: 600; }
     .to-top:hover { color: var(--neon); }
     .to-top svg { width: 16px; height: 16px; }
 
     /* =========================================================
-       REVEAL ANIMATION
+       REVEAL
        ========================================================= */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
     .reveal[data-delay="1"] { transition-delay: 0.08s; }
     .reveal[data-delay="2"] { transition-delay: 0.16s; }
     .reveal[data-delay="3"] { transition-delay: 0.24s; }
-
     .no-js .reveal { opacity: 1; transform: none; }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important; animation-delay: 0s !important;
+        animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; transition-delay: 0s !important;
+      }
       .reveal { opacity: 1; transform: none; }
+      .beam { rotate: 0deg; }
     }
   </style>
 </head>
 
 <body class="no-js">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- Reusable SVG symbols -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></symbol>
-      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-      <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.4c2.2.7 3.5 2.8 3.5 5.6"/></g></symbol>
-      <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></g></symbol>
-      <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
-      <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
-      <symbol id="i-fire" viewBox="0 0 24 24"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .2 1.8 1 2.8 2 3 0-3-1-6 .5-9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.3-9.2C1.5 7.6 3.6 4.5 7 4.5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.4 0 5.5 3.1 4.3 6.3C19.5 15.4 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-      <symbol id="i-tactic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="15" r="1.6"/><path d="M7 7l3 3M10 7l-3 3"/><path d="M10 15c3 0 6-2 7-6M15 8.5l2 .5.4-2"/></g></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
+      <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></symbol>
       <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-      <symbol id="i-post" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 6" stroke-linejoin="round"/><circle cx="15.5" cy="8.5" r="1.5"/></g></symbol>
-      <symbol id="i-story" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M9 6h6" stroke-linecap="round"/></g></symbol>
+      <symbol id="i-post" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6" stroke-linejoin="round"/><circle cx="15.5" cy="8.5" r="1.5"/></g></symbol>
+      <symbol id="i-story" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M9 6h6" stroke-linecap="round"/></g></symbol>
       <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
       <symbol id="i-dots" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></g></symbol>
       <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5zm5.3 13.3c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z" fill="currentColor"/></symbol>
-      <symbol id="i-verified" viewBox="0 0 24 24"><path d="M12 1.8l2.5 1.9 3.1-.2.9 3 2.6 1.8-1 3 1 2.9-2.6 1.8-.9 3-3.1-.2L12 22.2l-2.5-1.9-3.1.2-.9-3-2.6-1.8 1-3-1-2.9 2.6-1.8.9-3 3.1.2z" fill="currentColor"/><path d="M8 12.2l2.7 2.6L16 9.5" fill="none" stroke="#0f0f0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
 
-      <!-- TDF shield badge -->
-      <symbol id="tdf-badge" viewBox="0 0 64 70">
-        <path d="M32 2 60 11v22c0 17-12 28-28 35C16 61 4 50 4 33V11z" fill="#0f0f0f" stroke="#00E676" stroke-width="3.5"/>
-        <path d="M32 9 53 16v17c0 12.6-8.6 21.4-21 27.4C19.6 54.4 11 45.6 11 33V16z" fill="none" stroke="#00E676" stroke-opacity=".35" stroke-width="1.2"/>
-        <path d="M14 24h36" stroke="#00E676" stroke-width="1.2" stroke-opacity=".5"/>
-        <text x="32" y="44" text-anchor="middle" font-family="Montserrat, Arial Black, Arial, sans-serif" font-weight="900" font-style="italic" font-size="19" fill="#00E676" letter-spacing="-0.5">TDF</text>
-        <circle cx="32" cy="17" r="3.2" fill="#00E676"/>
+      <!-- Escudo TDF -->
+      <symbol id="tdf-crest" viewBox="0 0 120 132">
+        <g fill="#00E676">
+          <path d="M0-7l2.1 4.3 4.7.7-3.4 3.3.8 4.7L0 3.8-4.2 6l.8-4.7-3.4-3.3 4.7-.7z" transform="translate(60 9)"/>
+          <path d="M0-7l2.1 4.3 4.7.7-3.4 3.3.8 4.7L0 3.8-4.2 6l.8-4.7-3.4-3.3 4.7-.7z" transform="translate(38 15) scale(.82)"/>
+          <path d="M0-7l2.1 4.3 4.7.7-3.4 3.3.8 4.7L0 3.8-4.2 6l.8-4.7-3.4-3.3 4.7-.7z" transform="translate(82 15) scale(.82)"/>
+          <path d="M0-7l2.1 4.3 4.7.7-3.4 3.3.8 4.7L0 3.8-4.2 6l.8-4.7-3.4-3.3 4.7-.7z" transform="translate(19 26) scale(.66)"/>
+          <path d="M0-7l2.1 4.3 4.7.7-3.4 3.3.8 4.7L0 3.8-4.2 6l.8-4.7-3.4-3.3 4.7-.7z" transform="translate(101 26) scale(.66)"/>
+        </g>
+        <path d="M20 36h80l9 13-6 45-43 34-43-34-6-45z" fill="#050706" stroke="#00E676" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M29 63c3-13 16-21 31-21s28 8 31 21z" fill="#00E676"/>
+        <path d="M60 46l7 5-2.7 8h-8.6L53 51z" fill="#050706"/>
+        <path d="M5 68l110-9v30L5 99z" fill="#050706" stroke="#00E676" stroke-width="4" stroke-linejoin="round"/>
+        <text x="60" y="90" transform="rotate(-4.5 60 80)" text-anchor="middle" font-family="Archivo, 'Arial Black', sans-serif" font-weight="800" font-size="27" fill="#00E676">TDF</text>
+        <path d="M46 104v12M74 104v12" stroke="#00E676" stroke-width="5"/>
       </symbol>
+
+      <!-- Arte reutilizável: listras de gramado -->
+      <pattern id="grass" width="100" height="10" patternUnits="userSpaceOnUse">
+        <rect width="50" height="10" fill="#06180e"/><rect x="50" width="50" height="10" fill="#082114"/>
+      </pattern>
+      <marker id="arrowhead" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="#00E676"/>
+      </marker>
+      <marker id="arrowhead-w" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="#f2f5f0"/>
+      </marker>
+      <radialGradient id="heat">
+        <stop offset="0" stop-color="#00E676" stop-opacity=".6"/>
+        <stop offset=".55" stop-color="#00E676" stop-opacity=".18"/>
+        <stop offset="1" stop-color="#00E676" stop-opacity="0"/>
+      </radialGradient>
     </defs>
   </svg>
 
   <!-- ===================== HEADER ===================== -->
   <header class="header" id="header">
-    <div class="container">
-      <a href="#home" class="logo" aria-label="Tudo de Futebol — início">
-        <svg class="logo-badge" aria-hidden="true"><use href="#tdf-badge"/></svg>
-        <div class="logo-text">Tudo de Futebol<span>TDF</span></div>
+    <div class="container header__row">
+      <a href="#inicio" class="brand" aria-label="Tudo de Futebol — início">
+        <svg class="brand__crest" viewBox="0 0 120 132" aria-hidden="true"><use href="#tdf-crest"/></svg>
+        <span class="brand__name" aria-hidden="true">Tudo de Futebol<small>TDF</small></span>
       </a>
 
       <nav class="nav" aria-label="Navegação principal">
         <ul>
-          <li><a href="#home" class="active">Home</a></li>
           <li><a href="#noticias">Notícias</a></li>
           <li><a href="#analises">Análises</a></li>
-          <li><a href="#estatisticas">Estatísticas</a></li>
-          <li><a href="#parcerias">Parcerias</a></li>
+          <li><a href="#comunidade">Comunidade</a></li>
+          <li><a href="#contato" class="nav__quiet">Parcerias</a></li>
         </ul>
       </nav>
 
-      <a href="#contato" class="btn btn-primary btn-sm header-cta">
-        Anuncie Conosco
-        <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+      <div class="scorebug" aria-hidden="true">
+        <span class="scorebug__team">TDF</span>
+        <span class="scorebug__half" id="bugHalf">1ºT</span>
+        <span class="scorebug__min" id="bugMin">1'</span>
+      </div>
+
+      <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm header__cta">
+        <svg aria-hidden="true"><use href="#i-ig"/></svg> Seguir<span class="sr-only"> o TDF no Instagram (abre em nova aba)</span>
       </a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1263,429 +996,443 @@
     </div>
   </header>
 
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <a class="m-link" href="#home">Home <small>01</small></a>
-    <a class="m-link" href="#noticias">Notícias <small>02</small></a>
-    <a class="m-link" href="#analises">Análises <small>03</small></a>
-    <a class="m-link" href="#estatisticas">Estatísticas <small>04</small></a>
-    <a class="m-link" href="#parcerias">Parcerias <small>05</small></a>
-    <a href="#contato" class="btn btn-primary btn-block">Anuncie Conosco</a>
-    <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener" class="btn btn-ghost btn-block">
-      <svg aria-hidden="true"><use href="#i-ig"/></svg> Siga no Instagram
+  <div class="mobile-menu" id="mobileMenu" inert>
+    <a class="m-link" href="#noticias">Notícias</a>
+    <a class="m-link" href="#analises">Análises</a>
+    <a class="m-link" href="#comunidade">Comunidade</a>
+    <a class="m-link m-link--quiet" href="#contato">Parcerias</a>
+    <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+      <svg aria-hidden="true"><use href="#i-ig"/></svg> Seguir @tudodefutebol1_
     </a>
   </div>
 
-  <main>
+  <main id="conteudo">
     <!-- ===================== HERO ===================== -->
-    <section class="hero" id="home">
-      <div class="hero-bg">
-        <div class="hero-grid-lines"></div>
-        <!-- Pitch lines -->
-        <svg class="hero-pitch" viewBox="0 0 600 400" fill="none" stroke="#00E676" stroke-width="2" aria-hidden="true">
-          <rect x="10" y="10" width="580" height="380" rx="4"/>
-          <line x1="300" y1="10" x2="300" y2="390"/>
-          <circle cx="300" cy="200" r="60"/>
-          <circle cx="300" cy="200" r="4" fill="#00E676"/>
-          <rect x="10" y="100" width="90" height="200"/>
-          <rect x="10" y="150" width="34" height="100"/>
-          <rect x="500" y="100" width="90" height="200"/>
-          <rect x="556" y="150" width="34" height="100"/>
-          <path d="M100 160a50 50 0 0 1 0 80M500 160a50 50 0 0 0 0 80"/>
-        </svg>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="stadium" aria-hidden="true">
+        <div class="stadium__sky"></div>
+        <div class="beam beam--l1"></div>
+        <div class="beam beam--l2"></div>
+        <div class="beam beam--r1"></div>
+        <div class="beam beam--r2"></div>
+        <div class="lights lights--l"></div>
+        <div class="lights lights--r"></div>
+        <canvas class="stadium__crowd" id="crowd"></canvas>
+        <div class="stadium__pitch">
+          <svg viewBox="0 0 1000 400" preserveAspectRatio="none" fill="none" stroke="rgba(242,245,240,.35)" stroke-width="2.5">
+            <rect x="20" y="20" width="960" height="760"/>
+            <line x1="20" y1="380" x2="980" y2="380"/>
+            <ellipse cx="500" cy="380" rx="120" ry="90"/>
+            <rect x="330" y="20" width="340" height="110"/>
+            <rect x="420" y="20" width="160" height="40"/>
+          </svg>
+        </div>
+        <div class="stadium__veil"></div>
+        <div class="stadium__grain"></div>
       </div>
 
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <span class="live-pill reveal"><span class="live-dot"></span> Cobertura ao vivo, todo dia</span>
+      <div class="container hero__content">
+        <p class="hero__eyebrow"><span class="live-dot"></span> Cobertura diária · Brasil e mundo</p>
 
-          <h1 class="reveal" data-delay="1">
-            Acompanhe <span class="hl">tudo</span> sobre o futebol
-            <span class="stroke">brasileiro</span> e internacional em um só lugar
-          </h1>
-
-          <p class="hero-sub reveal" data-delay="2">
-            Notícias, bastidores, análises táticas e estatísticas para <strong>+70 mil apaixonados por futebol</strong>.
-            <span class="hero-slogan">O futebol não para. A gente também não.</span>
-          </p>
-
-          <div class="hero-ctas reveal" data-delay="3">
-            <a href="#contato" class="btn btn-primary">
-              Falar sobre Parcerias
-              <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a>
-            <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener" class="btn btn-ghost">
-              <svg aria-hidden="true"><use href="#i-ig"/></svg>
-              Acessar Instagram
-            </a>
-          </div>
-
-          <div class="hero-proof reveal" data-delay="3">
-            <div class="avatars" aria-hidden="true">
-              <i style="background:#00E676">R</i>
-              <i style="background:#69f0ae">M</i>
-              <i style="background:#b9f6ca">L</i>
-              <i style="background:#fff">+</i>
-            </div>
-            <span>Junte-se a <b>70 mil+</b> torcedores que já seguem o TDF</span>
-          </div>
+        <div class="hero__crest-wrap">
+          <img class="hero__logo" src="assets/tdf-logo-estadio.jpg" width="1254" height="1254" fetchpriority="high" decoding="async"
+               alt="Escudo verde do TDF, com bola e cinco estrelas, sobre um estádio iluminado" />
         </div>
 
-        <div class="hero-visual reveal" data-delay="2" aria-hidden="true">
-          <div class="ig-card">
-            <div class="ig-top">
-              <div class="ig-avatar"><div><svg viewBox="0 0 64 70"><use href="#tdf-badge"/></svg></div></div>
-              <div>
-                <div class="ig-handle">tudodefutebol1_ <svg><use href="#i-verified"/></svg></div>
-                <div class="ig-name">Tudo de Futebol • Portal esportivo</div>
-              </div>
-            </div>
-            <div class="ig-stats">
-              <div><b>8.9K</b><span>publicações</span></div>
-              <div><b>70K+</b><span>seguidores</span></div>
-              <div><b>24/7</b><span>cobertura</span></div>
-            </div>
-            <div class="ig-grid">
-              <div>Gol!<br>⚽</div>
-              <div>Análise<br>tática</div>
-              <div>Mercado da bola</div>
-              <div></div>
-              <div>Rodada<br>em dados</div>
-              <div>Série B</div>
-            </div>
-          </div>
+        <h1 class="hero__title" id="hero-title">
+          <span class="line"><span>Tudo de</span></span>
+          <span class="line line--o"><span>Futebol</span></span>
+        </h1>
 
-          <div class="float-chip chip-a">
-            <span class="ico"><svg><use href="#i-heart"/></svg></span>
-            <div>Engajamento alto<small>em cada publicação</small></div>
-          </div>
-          <div class="float-chip chip-b">
-            <span class="ico"><svg><use href="#i-fire"/></svg></span>
-            <div>Plantão TDF<small>notícia em tempo real</small></div>
+        <p class="hero__tag">O futebol não para. <em>A gente também não.</em></p>
+        <p class="hero__sub">
+          Notícias, análises táticas e estatísticas do futebol brasileiro e internacional para
+          <strong>+70 mil apaixonados</strong> que seguem o TDF.
+        </p>
+
+        <div class="hero__ctas">
+          <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+            <svg aria-hidden="true"><use href="#i-ig"/></svg> Seguir no Instagram<span class="sr-only"> (abre em nova aba)</span>
+          </a>
+          <a href="#noticias" class="btn btn--ghost">
+            Ver últimas notícias <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="broadcast" aria-hidden="true">
+        <span class="broadcast__label"><i></i>TDF</span>
+        <div class="broadcast__viewport">
+          <div class="broadcast__track">
+            <span class="broadcast__item">Brasileirão</span>
+            <span class="broadcast__item">Série B</span>
+            <span class="broadcast__item">Seleção Brasileira</span>
+            <span class="broadcast__item">Libertadores</span>
+            <span class="broadcast__item">Champions League</span>
+            <span class="broadcast__item">Mercado da Bola</span>
+            <span class="broadcast__item">Análise Tática</span>
+            <span class="broadcast__item">Copa do Brasil</span>
+            <span class="broadcast__item">Brasileirão</span>
+            <span class="broadcast__item">Série B</span>
+            <span class="broadcast__item">Seleção Brasileira</span>
+            <span class="broadcast__item">Libertadores</span>
+            <span class="broadcast__item">Champions League</span>
+            <span class="broadcast__item">Mercado da Bola</span>
+            <span class="broadcast__item">Análise Tática</span>
+            <span class="broadcast__item">Copa do Brasil</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== TICKER ===================== -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-inner"><div class="ticker-track">
-        <span class="ticker-item">Brasileirão</span>
-        <span class="ticker-item">Série B</span>
-        <span class="ticker-item">Seleção Brasileira</span>
-        <span class="ticker-item">Libertadores</span>
-        <span class="ticker-item">Champions League</span>
-        <span class="ticker-item">Mercado da Bola</span>
-        <span class="ticker-item">Análise Tática</span>
-        <span class="ticker-item">Copa do Brasil</span>
-        <!-- duplicated for seamless loop -->
-        <span class="ticker-item">Brasileirão</span>
-        <span class="ticker-item">Série B</span>
-        <span class="ticker-item">Seleção Brasileira</span>
-        <span class="ticker-item">Libertadores</span>
-        <span class="ticker-item">Champions League</span>
-        <span class="ticker-item">Mercado da Bola</span>
-        <span class="ticker-item">Análise Tática</span>
-        <span class="ticker-item">Copa do Brasil</span>
-      </div></div>
-    </div>
-
-    <!-- ===================== STATS ===================== -->
-    <section class="section" id="estatisticas">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Prova social</span>
-          <h2 class="section-title">Uma torcida <em>gigante</em> e engajada</h2>
-          <p class="section-lead">Números que mostram a força da comunidade TDF — gente que vive futebol todos os dias e confia no nosso conteúdo.</p>
+    <!-- ===================== MANIFESTO ===================== -->
+    <section class="manifesto" aria-labelledby="manifesto-title">
+      <div class="container manifesto__grid">
+        <div>
+        <h2 class="manifesto__label" id="manifesto-title">O que é o TDF</h2>
+        <p class="manifesto__text" data-words>
+          Do <span class="k">Brasileirão</span> à <span class="k">Champions,</span> da <span class="k">Série B</span> à <span class="k">Seleção:</span>
+          o TDF acompanha o jogo inteiro. Notícia rápida, análise tática e opinião com dado na mão,
+          todos os dias, para quem vive futebol.
+        </p>
         </div>
-
-        <div class="stats-grid">
-          <article class="stat-card reveal">
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-users"/></svg></div>
-            <div class="stat-value"><span class="plus">+</span><span class="count" data-target="70" data-decimals="0">0</span><span class="suf">K</span></div>
-            <div class="stat-label">Seguidores no Instagram</div>
-            <div class="stat-desc">Comunidade fiel e crescendo a cada rodada.</div>
-          </article>
-
-          <article class="stat-card reveal" data-delay="1">
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-grid"/></svg></div>
-            <div class="stat-value"><span class="plus">+</span><span class="count" data-target="8.9" data-decimals="1">0</span><span class="suf">K</span></div>
-            <div class="stat-label">Publicações e coberturas</div>
-            <div class="stat-desc">Conteúdo diário, do plantão às análises.</div>
-          </article>
-
-          <article class="stat-card reveal" data-delay="2">
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-eye"/></svg></div>
-            <div class="stat-value word">Milhares</div>
-            <div class="stat-label">De leitores engajados diários</div>
-            <div class="stat-desc">Curtidas, comentários e compartilhamentos reais.</div>
-          </article>
-
-          <article class="stat-card reveal" data-delay="3">
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></div>
-            <div class="stat-value"><span class="count" data-target="7" data-decimals="0">0</span><span class="suf">/7</span></div>
-            <div class="stat-label">Dias por semana no ar</div>
-            <div class="stat-desc">O futebol não para. A gente também não.</div>
-          </article>
-        </div>
+        <figure class="manifesto__media" id="manifestoMedia">
+          <img src="assets/jogador-neon.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async" />
+        </figure>
       </div>
     </section>
 
     <!-- ===================== NEWS ===================== -->
-    <section class="section" id="noticias">
+    <section class="news" id="noticias" aria-labelledby="news-title" data-lazy-bg>
       <div class="container">
-        <div class="section-head row">
+        <div class="news__head">
           <div class="reveal">
             <span class="eyebrow">Feed TDF</span>
-            <h2 class="section-title">Últimas notícias <em>&amp;</em> análises</h2>
-            <p class="section-lead">Do Brasileirão à Champions: o que está acontecendo agora, explicado do jeito TDF.</p>
+            <h2 class="sec-title" id="news-title">Últimas notícias <span class="o">&amp; análises</span></h2>
           </div>
-          <div class="filters reveal" role="tablist" aria-label="Filtrar notícias">
-            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Tudo</button>
-            <button class="filter-btn" data-filter="nacional" role="tab" aria-selected="false">Nacional</button>
-            <button class="filter-btn" data-filter="selecao" role="tab" aria-selected="false">Seleção</button>
-            <button class="filter-btn" data-filter="analise" role="tab" aria-selected="false">Análises</button>
-            <button class="filter-btn" data-filter="internacional" role="tab" aria-selected="false">Internacional</button>
+          <div class="filters reveal" role="group" aria-label="Filtrar por editoria">
+            <button class="filter" data-filter="all" aria-pressed="true">Tudo</button>
+            <button class="filter" data-filter="nacional" aria-pressed="false">Nacional</button>
+            <button class="filter" data-filter="selecao" aria-pressed="false">Seleção</button>
+            <button class="filter" data-filter="analise" aria-pressed="false">Análises</button>
+            <button class="filter" data-filter="internacional" aria-pressed="false">Internacional</button>
           </div>
         </div>
 
-        <div class="news-grid">
-          <!-- Card 1 -->
-          <article class="news-card reveal" data-cat="nacional">
-            <div class="news-thumb">
-              <div class="art art-1"></div>
-              <svg class="motif" viewBox="0 0 320 200" aria-hidden="true">
-                <g fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5">
-                  <circle cx="160" cy="100" r="46"/><line x1="160" y1="0" x2="160" y2="200"/>
-                </g>
-                <g transform="translate(222 120)">
-                  <circle r="26" fill="#fff"/>
-                  <path d="M0-12l11 8-4 13H-7l-4-13z" fill="#0f0f0f"/>
-                </g>
-              </svg>
-              <span class="tag">Série B</span>
-            </div>
-            <div class="news-body">
-              <div class="news-meta"><span>05 out 2026</span><span class="dot"></span><span>3 min de leitura</span></div>
-              <h3>Reta final da Série B: a briga pelo acesso nunca esteve tão apertada</h3>
-              <p>Pontos corridos, confrontos diretos e tabela embolada. Mapeamos quem chega mais forte para as últimas rodadas.</p>
-              <a href="#noticias" class="read-more">Ler matéria <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
+        <div class="feed" id="feed" aria-live="polite">
+          <!-- Destaque -->
+          <article class="story story--lead" data-cat="analise">
+            <a class="story__link" href="#analises">
+              <div class="story__media">
+                <svg class="story__art" viewBox="0 0 800 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <rect width="800" height="620" fill="url(#grass)"/>
+                  <text x="30" y="170" font-family="'Big Shoulders Display', Impact, sans-serif" font-weight="900" font-size="190" fill="none" stroke="rgba(0,230,118,.22)" stroke-width="2">PRESSÃO</text>
+                  <g fill="none" stroke="rgba(242,245,240,.2)" stroke-width="2">
+                    <rect x="30" y="30" width="740" height="560"/><line x1="400" y1="30" x2="400" y2="590"/>
+                    <circle cx="400" cy="310" r="70"/><rect x="650" y="190" width="120" height="240"/>
+                  </g>
+                  <circle cx="560" cy="300" r="70" fill="rgba(0,230,118,.1)" stroke="#00E676" stroke-width="2" stroke-dasharray="8 7"/>
+                  <g stroke="#00E676" stroke-width="3" fill="none" marker-end="url(#arrowhead)">
+                    <path d="M440 210 Q500 230 528 268"/><path d="M450 410 Q510 380 530 336"/><path d="M680 220 Q630 240 596 270"/><path d="M670 400 Q630 370 598 334"/>
+                  </g>
+                  <g fill="#00E676" stroke="#06180e" stroke-width="3"><circle cx="430" cy="205" r="14"/><circle cx="440" cy="415" r="14"/><circle cx="690" cy="215" r="14"/><circle cx="680" cy="405" r="14"/></g>
+                  <circle cx="560" cy="300" r="15" fill="#f2f5f0"/><circle cx="578" cy="312" r="6" fill="#f2f5f0"/>
+                </svg>
+              </div>
+              <div class="story__body">
+                <span class="tag">Análise tática</span>
+                <h3 class="story__title">Pressão pós-perda: por que os times que dominam o Brasileirão roubam a bola alto</h3>
+                <p class="story__dek">Desenhamos o comportamento sem bola das equipes do topo e mostramos onde o jogo é decidido.</p>
+                <p class="story__meta"><time datetime="2026-10-03">03 out 2026</time> · 6 min de leitura</p>
+                <span class="story__cta">Ver como analisamos <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+              </div>
+            </a>
           </article>
 
-          <!-- Card 2 -->
-          <article class="news-card reveal" data-delay="1" data-cat="selecao">
-            <div class="news-thumb">
-              <div class="art art-2"></div>
-              <svg class="motif" viewBox="0 0 320 200" aria-hidden="true">
-                <g transform="translate(160 100)">
-                  <path d="M0-48l13 27 30 4-22 21 5 30L0 20l-26 14 5-30-22-21 30-4z" fill="rgba(255,255,255,.92)"/>
-                </g>
-              </svg>
-              <span class="tag">Seleção Brasileira</span>
-            </div>
-            <div class="news-body">
-              <div class="news-meta"><span>04 out 2026</span><span class="dot"></span><span>4 min de leitura</span></div>
-              <h3>Convocação da Seleção: quem ganha espaço e quem fica de fora</h3>
-              <p>Analisamos a lista, as surpresas e o que ela revela sobre o novo ciclo da Amarelinha.</p>
-              <a href="#noticias" class="read-more">Ler matéria <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
+          <!-- Série B -->
+          <article class="story story--item" data-cat="nacional">
+            <a class="story__link" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer">
+              <div class="story__media">
+                <svg class="story__art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <rect width="400" height="300" fill="#071a10"/>
+                  <g font-family="'IBM Plex Mono', monospace" font-size="16" font-weight="600">
+                    <g fill="#00E676"><rect x="40" y="40" width="300" height="22"/><rect x="40" y="70" width="270" height="22"/><rect x="40" y="100" width="250" height="22"/><rect x="40" y="130" width="232" height="22"/></g>
+                    <g fill="rgba(242,245,240,.16)"><rect x="40" y="160" width="226" height="22"/><rect x="40" y="190" width="214" height="22"/><rect x="40" y="220" width="200" height="22"/><rect x="40" y="250" width="180" height="22"/></g>
+                    <g fill="#03140a"><text x="48" y="57">1</text><text x="48" y="87">2</text><text x="48" y="117">3</text><text x="48" y="147">4</text></g>
+                    <line x1="30" y1="156" x2="370" y2="156" stroke="#f2f5f0" stroke-width="2" stroke-dasharray="6 5"/>
+                  </g>
+                  <circle cx="340" cy="232" r="30" fill="#f2f5f0"/><path d="M340 218l13 9-5 15h-16l-5-15z" fill="#071a10"/>
+                </svg>
+              </div>
+              <div>
+                <span class="story__kicker">Série B</span>
+                <h3 class="story__title">Reta final da Série B: a briga pelo acesso nunca esteve tão apertada</h3>
+                <p class="story__dek">Pontos corridos, confrontos diretos e tabela embolada. Mapeamos quem chega mais forte.</p>
+                <p class="story__meta"><time datetime="2026-10-05">05 out 2026</time> · 3 min</p>
+              </div>
+            </a>
           </article>
 
-          <!-- Card 3 -->
-          <article class="news-card reveal" data-delay="2" data-cat="analise">
-            <div class="news-thumb">
-              <div class="art art-3"></div>
-              <svg class="motif" viewBox="0 0 320 200" aria-hidden="true">
-                <g fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.5"><rect x="20" y="20" width="280" height="160" rx="4"/><line x1="160" y1="20" x2="160" y2="180"/></g>
-                <g fill="#00E676"><circle cx="70" cy="60" r="7"/><circle cx="70" cy="140" r="7"/><circle cx="120" cy="100" r="7"/><circle cx="200" cy="70" r="7"/><circle cx="200" cy="130" r="7"/></g>
-                <g fill="#fff"><circle cx="250" cy="100" r="7"/><circle cx="160" cy="100" r="7"/></g>
-                <path d="M120 100Q170 40 245 95" fill="none" stroke="#00E676" stroke-width="2.5" stroke-dasharray="6 5"/>
-              </svg>
-              <span class="tag">Análise Tática</span>
-            </div>
-            <div class="news-body">
-              <div class="news-meta"><span>03 out 2026</span><span class="dot"></span><span>6 min de leitura</span></div>
-              <h3>Pressão pós-perda: por que os times que dominam o Brasileirão roubam a bola alto</h3>
-              <p>Desenhamos o comportamento sem bola das equipes do topo e mostramos onde o jogo é decidido.</p>
-              <a href="#analises" class="read-more">Ver análise <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
+          <!-- Seleção -->
+          <article class="story story--item" data-cat="selecao">
+            <a class="story__link" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer">
+              <div class="story__media">
+                <svg class="story__art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs><linearGradient id="sel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd400"/><stop offset=".6" stop-color="#00a152"/><stop offset="1" stop-color="#062a17"/></linearGradient></defs>
+                  <rect width="400" height="300" fill="url(#sel)"/>
+                  <circle cx="200" cy="150" r="78" fill="#0b3d91"/>
+                  <path d="M200 96l15 31 34 5-25 24 6 34-30-16-30 16 6-34-25-24 34-5z" fill="#f2f5f0"/>
+                  <text x="200" y="290" text-anchor="middle" font-family="'Big Shoulders Display', Impact, sans-serif" font-weight="900" font-size="64" fill="none" stroke="rgba(3,20,10,.35)" stroke-width="2">AMARELINHA</text>
+                </svg>
+              </div>
+              <div>
+                <span class="story__kicker">Seleção Brasileira</span>
+                <h3 class="story__title">Convocação da Seleção: quem ganha espaço e quem fica de fora</h3>
+                <p class="story__dek">A lista, as surpresas e o que ela revela sobre o novo ciclo da Amarelinha.</p>
+                <p class="story__meta"><time datetime="2026-10-04">04 out 2026</time> · 4 min</p>
+              </div>
+            </a>
           </article>
 
-          <!-- Card 4 -->
-          <article class="news-card reveal" data-delay="3" data-cat="internacional">
-            <div class="news-thumb">
-              <div class="art art-4"></div>
-              <svg class="motif" viewBox="0 0 320 200" aria-hidden="true">
-                <g transform="translate(160 104)" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" stroke-linejoin="round">
-                  <path d="M-26-40h52v16c0 20-12 32-26 32S-26-4-26-24z"/>
-                  <path d="M-26-30h-12c0 14 6 20 14 22M26-30h12c0 14-6 20-14 22"/>
-                  <path d="M0 8v16M-16 40h32l-4-16h-24z"/>
-                </g>
-              </svg>
-              <span class="tag">Champions League</span>
-            </div>
-            <div class="news-body">
-              <div class="news-meta"><span>02 out 2026</span><span class="dot"></span><span>4 min de leitura</span></div>
-              <h3>Brasileiros na Europa: os destaques da rodada da Champions</h3>
-              <p>Gols, assistências e atuações que fizeram barulho. O raio-x de quem brilhou lá fora.</p>
-              <a href="#noticias" class="read-more">Ler matéria <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
+          <!-- Internacional -->
+          <article class="story story--item" data-cat="internacional">
+            <a class="story__link" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer">
+              <div class="story__media">
+                <svg class="story__art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs><radialGradient id="ucl" cx=".5" cy=".5" r=".7"><stop offset="0" stop-color="#16285c"/><stop offset="1" stop-color="#050915"/></radialGradient></defs>
+                  <rect width="400" height="300" fill="url(#ucl)"/>
+                  <g fill="#f2f5f0">
+                    <path id="st" d="M0-11l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1z" transform="translate(200 52)"/>
+                    <use href="#st" transform="rotate(45 200 150)"/><use href="#st" transform="rotate(90 200 150)"/><use href="#st" transform="rotate(135 200 150)"/>
+                    <use href="#st" transform="rotate(180 200 150)"/><use href="#st" transform="rotate(225 200 150)"/><use href="#st" transform="rotate(270 200 150)"/><use href="#st" transform="rotate(315 200 150)"/>
+                  </g>
+                  <circle cx="200" cy="150" r="52" fill="none" stroke="rgba(242,245,240,.85)" stroke-width="3"/>
+                  <path d="M200 120l22 16-8 26h-28l-8-26z" fill="none" stroke="rgba(242,245,240,.85)" stroke-width="3"/>
+                </svg>
+              </div>
+              <div>
+                <span class="story__kicker">Champions League</span>
+                <h3 class="story__title">Brasileiros na Europa: os destaques da rodada da Champions</h3>
+                <p class="story__dek">Gols, assistências e atuações que fizeram barulho lá fora.</p>
+                <p class="story__meta"><time datetime="2026-10-02">02 out 2026</time> · 4 min</p>
+              </div>
+            </a>
           </article>
         </div>
-      </div>
-    </section>
 
-    <!-- ===================== ANALYSIS ===================== -->
-    <section class="section" id="analises">
-      <div class="container analysis">
-        <div class="board reveal" aria-hidden="true">
-          <span class="board-label">4-3-3 • SAÍDA DE BOLA</span>
-          <svg viewBox="0 0 400 260" fill="none">
-            <g stroke="rgba(255,255,255,.35)" stroke-width="1.5">
-              <rect x="6" y="6" width="388" height="248" rx="3"/>
-              <line x1="200" y1="6" x2="200" y2="254"/>
-              <circle cx="200" cy="130" r="36"/>
-              <rect x="6" y="70" width="56" height="120"/><rect x="6" y="104" width="20" height="52"/>
-              <rect x="338" y="70" width="56" height="120"/><rect x="374" y="104" width="20" height="52"/>
-            </g>
-            <!-- runs -->
-            <g stroke="#00E676" stroke-width="2" class="run-line">
-              <path d="M150 130 Q210 100 262 70"/>
-              <path d="M110 200 Q200 230 300 205"/>
-              <path d="M262 130 L330 130"/>
-            </g>
-            <!-- team -->
-            <g fill="#00E676" stroke="#0a2a1a" stroke-width="2">
-              <circle class="player" cx="30" cy="130" r="9"/>
-              <circle class="player" cx="80" cy="60" r="9"/>
-              <circle class="player" cx="70" cy="105" r="9"/>
-              <circle class="player" cx="70" cy="155" r="9"/>
-              <circle class="player" cx="80" cy="200" r="9"/>
-              <circle class="player" cx="150" cy="130" r="9"/>
-              <circle class="player" cx="170" cy="80" r="9"/>
-              <circle class="player" cx="110" cy="200" r="9"/>
-              <circle class="player" cx="262" cy="70" r="9"/>
-              <circle class="player" cx="262" cy="130" r="9"/>
-              <circle class="player" cx="262" cy="195" r="9"/>
-            </g>
-            <!-- opponents -->
-            <g fill="#ffffff" fill-opacity=".85">
-              <circle cx="232" cy="100" r="7"/><circle cx="232" cy="160" r="7"/>
-              <circle cx="300" cy="90" r="7"/><circle cx="300" cy="170" r="7"/>
-              <circle cx="370" cy="130" r="7"/>
-            </g>
-            <!-- ball -->
-            <circle cx="160" cy="138" r="4.5" fill="#fff"/>
-          </svg>
-        </div>
-
-        <div>
-          <div class="reveal">
-            <span class="eyebrow">Análises exclusivas</span>
-            <h2 class="section-title">O jogo além do <em>placar</em></h2>
-            <p class="section-lead">Não é só resultado: o TDF explica o porquê. Quadros táticos, números da rodada e leitura de jogo em formato rápido, feito para o feed.</p>
-          </div>
-          <ul class="check-list">
-            <li class="reveal" data-delay="1"><span class="check"><svg><use href="#i-check"/></svg></span><div><b>Quadro tático da rodada</b>Formações, encaixes e as mudanças que viraram jogos.</div></li>
-            <li class="reveal" data-delay="2"><span class="check"><svg><use href="#i-check"/></svg></span><div><b>Estatísticas que contam história</b>Posse, finalizações e xG traduzidos para o torcedor.</div></li>
-            <li class="reveal" data-delay="3"><span class="check"><svg><use href="#i-check"/></svg></span><div><b>Opinião com embasamento</b>Debate quente, mas sempre com dado na mão.</div></li>
-          </ul>
-          <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener" class="btn btn-ghost reveal">
-            <svg aria-hidden="true"><use href="#i-ig"/></svg> Ver análises no Instagram
+        <div class="news__more reveal">
+          <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
+            <svg aria-hidden="true"><use href="#i-ig"/></svg> Mais notícias no Instagram<span class="sr-only"> (abre em nova aba)</span>
           </a>
+          <p>O plantão TDF roda no feed e nos stories, todos os dias.</p>
         </div>
       </div>
     </section>
 
-    <!-- ===================== MEDIA KIT ===================== -->
-    <section class="section" id="parcerias">
+    <!-- ===================== ANÁLISES ===================== -->
+    <section class="analysis" id="analises" aria-labelledby="analysis-title">
+      <img class="analysis__hand" src="assets/analise-wireframe.jpg" width="512" height="512" alt="" loading="lazy" decoding="async" />
+      <div class="bigline" aria-hidden="true">
+        <div class="bigline__track" id="bigline">
+          <span>O jogo</span><b>além do placar</b><span>O jogo</span><b>além do placar</b><span>O jogo</span><b>além do placar</b>
+        </div>
+      </div>
+
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Mídia kit • Parcerias &amp; Publicidade</span>
-          <h2 class="section-title">Sua marca no <em>meio do jogo</em></h2>
-          <p class="section-lead">Conecte sua empresa a um público que respira futebol. Criamos ações que parecem conteúdo — e por isso funcionam.</p>
-        </div>
+        <div class="analysis__grid">
+          <div class="analysis__intro reveal">
+            <span class="eyebrow">Análises exclusivas</span>
+            <h2 class="sec-title" id="analysis-title">O jogo além do <span class="o">placar</span></h2>
+            <p class="sec-lead">Não é só resultado: o TDF explica o porquê. Quadros táticos, números da rodada e leitura de jogo em formato rápido, feito para o feed.</p>
+          </div>
 
-        <div class="benefits">
-          <article class="benefit reveal">
-            <span class="num">01</span>
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-fire"/></svg></div>
-            <h3>Engajamento alto</h3>
-            <p>Comentários, salvamentos e compartilhamentos constantes: sua marca aparece onde a conversa acontece.</p>
-          </article>
-          <article class="benefit reveal" data-delay="1">
-            <span class="num">02</span>
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-heart"/></svg></div>
-            <h3>Público apaixonado</h3>
-            <p>+70 mil torcedores que consomem esporte todos os dias — ideal para apostas, materiais esportivos, food &amp; beverage e muito mais.</p>
-          </article>
-          <article class="benefit reveal" data-delay="2">
-            <span class="num">03</span>
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-tactic"/></svg></div>
-            <h3>Análises táticas exclusivas</h3>
-            <p>Associe sua marca a conteúdo de credibilidade, com formatos patrocinados de análise e estatística.</p>
-          </article>
-          <article class="benefit reveal" data-delay="3">
-            <span class="num">04</span>
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-chat"/></svg></div>
-            <h3>Ações customizadas</h3>
-            <p>Campanhas sob medida via posts, stories e Direct — do lançamento de produto a sorteios e ativações.</p>
-          </article>
-        </div>
+          <div class="board-wrap">
+            <div class="board" id="board" data-state="tatico">
+              <div class="board__bar">
+                <span class="board__label" id="boardLabel">4-3-3 · Saída de bola</span>
+                <span class="board__src">Quadro TDF</span>
+              </div>
+              <svg viewBox="0 0 600 390" role="img" aria-labelledby="boardDesc">
+                <title id="boardDesc">Quadro tático ilustrativo: time em 4-3-3 na saída de bola, com as linhas de corrida dos jogadores.</title>
+                <rect width="600" height="390" fill="url(#grass)"/>
+                <g fill="none" stroke="rgba(242,245,240,.35)" stroke-width="1.6">
+                  <rect x="10" y="10" width="580" height="370"/>
+                  <line x1="300" y1="10" x2="300" y2="380"/>
+                  <circle cx="300" cy="195" r="50"/>
+                  <rect x="10" y="105" width="85" height="180"/><rect x="10" y="155" width="30" height="80"/>
+                  <rect x="505" y="105" width="85" height="180"/><rect x="560" y="155" width="30" height="80"/>
+                  <path d="M95 165a40 40 0 0 1 0 60M505 165a40 40 0 0 0 0 60"/>
+                </g>
+                <circle cx="300" cy="195" r="3" fill="rgba(242,245,240,.5)"/>
 
-        <div class="formats">
-          <div class="format reveal">
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-post"/></svg></div>
-            <div><b>Post patrocinado</b><span>Feed e carrossel com a linguagem TDF</span></div>
-          </div>
-          <div class="format reveal" data-delay="1">
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-story"/></svg></div>
-            <div><b>Stories</b><span>Alcance rápido com link e enquetes</span></div>
-          </div>
-          <div class="format reveal" data-delay="2">
-            <div class="stat-icon"><svg aria-hidden="true"><use href="#i-star"/></svg></div>
-            <div><b>Análise de marca</b><span>Conteúdo especial assinado pela sua marca</span></div>
-          </div>
-        </div>
+                <!-- Estatísticas: calor + rede de passes -->
+                <g class="ov ov--dados">
+                  <ellipse cx="300" cy="195" rx="120" ry="130" fill="url(#heat)"/>
+                  <ellipse cx="400" cy="150" rx="80" ry="70" fill="url(#heat)"/>
+                  <ellipse cx="225" cy="260" rx="70" ry="60" fill="url(#heat)" opacity=".7"/>
+                  <g stroke="rgba(242,245,240,.7)" stroke-linecap="round">
+                    <line x1="70" y1="195" x2="215" y2="160" stroke-width="1.5"/>
+                    <line x1="70" y1="195" x2="215" y2="230" stroke-width="1.5"/>
+                    <line x1="215" y1="160" x2="215" y2="230" stroke-width="4"/>
+                    <line x1="230" y1="85" x2="320" y2="90" stroke-width="2"/>
+                    <line x1="215" y1="160" x2="305" y2="165" stroke-width="5"/>
+                    <line x1="215" y1="230" x2="305" y2="225" stroke-width="3"/>
+                    <line x1="230" y1="305" x2="320" y2="300" stroke-width="2"/>
+                    <line x1="305" y1="165" x2="305" y2="225" stroke-width="5"/>
+                    <line x1="305" y1="165" x2="410" y2="160" stroke-width="3"/>
+                    <line x1="305" y1="225" x2="410" y2="235" stroke-width="2"/>
+                    <line x1="320" y1="90" x2="410" y2="160" stroke-width="2"/>
+                    <line x1="320" y1="300" x2="410" y2="235" stroke-width="1.5"/>
+                    <line x1="410" y1="160" x2="410" y2="235" stroke-width="2"/>
+                  </g>
+                </g>
 
-        <div class="kit-cta reveal">
-          <div>
-            <h3>Pronto para entrar em campo?</h3>
-            <p>Receba nosso mídia kit e uma proposta sob medida para sua marca.</p>
+                <!-- Opinião: espaço entre linhas -->
+                <g class="ov ov--opiniao">
+                  <rect x="350" y="112" width="105" height="166" fill="rgba(0,230,118,.12)" stroke="#00E676" stroke-width="1.6" stroke-dasharray="6 5"/>
+                  <g stroke="rgba(242,245,240,.55)" stroke-width="1.4" stroke-dasharray="4 5">
+                    <line x1="350" y1="30" x2="350" y2="360"/><line x1="455" y1="30" x2="455" y2="360"/>
+                  </g>
+                  <text x="402" y="100" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="12" fill="#00E676" letter-spacing="1">ENTRE LINHAS</text>
+                  <path d="M292 195 L380 195" stroke="#f2f5f0" stroke-width="2.5" marker-end="url(#arrowhead-w)"/>
+                </g>
+
+                <!-- Quadro tático: corridas -->
+                <g class="ov ov--tatico" fill="none" stroke="#00E676" stroke-width="2.4" marker-end="url(#arrowhead)">
+                  <path class="run" d="M232 186 Q305 135 378 112"/>
+                  <path class="run" d="M172 306 Q300 352 438 318"/>
+                  <path class="run" d="M405 195 L500 195"/>
+                </g>
+
+                <!-- Adversários -->
+                <g fill="#f2f5f0" fill-opacity=".88">
+                  <circle cx="350" cy="125" r="8"/><circle cx="350" cy="265" r="8"/>
+                  <circle cx="455" cy="90" r="8"/><circle cx="455" cy="165" r="8"/><circle cx="455" cy="225" r="8"/><circle cx="455" cy="300" r="8"/>
+                  <circle cx="575" cy="195" r="8"/>
+                </g>
+
+                <!-- Time (posições definidas via JS) -->
+                <g id="team" fill="#00E676" stroke="#06190f" stroke-width="2.5">
+                  <g class="pl" style="transform:translate(45px,195px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(120px,90px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(105px,157px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(105px,232px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(120px,300px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(225px,195px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(255px,120px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(165px,300px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(393px,105px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(393px,195px)"><circle r="10"/></g>
+                  <g class="pl" style="transform:translate(393px,292px)"><circle r="10"/></g>
+                </g>
+                <g class="pl" id="ball" style="transform:translate(237px,205px)"><circle r="5" fill="#f2f5f0"/></g>
+              </svg>
+              <div class="board__tabs" role="group" aria-label="Escolher leitura do quadro">
+                <button class="board__tab" data-state="tatico" aria-pressed="true">Tático</button>
+                <button class="board__tab" data-state="dados" aria-pressed="false">Números</button>
+                <button class="board__tab" data-state="opiniao" aria-pressed="false">Opinião</button>
+              </div>
+            </div>
           </div>
-          <a href="#contato" class="btn">
-            Quero anunciar
-            <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
+
+          <div class="lenses">
+            <article class="lens is-active" data-state="tatico">
+              <span class="lens__tag">Formações e encaixes</span>
+              <h3>Quadro tático da rodada</h3>
+              <p>Formações, encaixes e as mudanças que viraram jogos, desenhados para você entender em poucos segundos.</p>
+            </article>
+            <article class="lens" data-state="dados">
+              <span class="lens__tag">Dados traduzidos</span>
+              <h3>Estatísticas que contam história</h3>
+              <p>Posse, finalizações e xG traduzidos para o torcedor. O número só entra quando explica alguma coisa.</p>
+            </article>
+            <article class="lens" data-state="opiniao">
+              <span class="lens__tag">Leitura TDF</span>
+              <h3>Opinião com embasamento</h3>
+              <p>Debate quente, mas sempre com dado na mão. A gente mostra onde o jogo foi decidido, e por quê.</p>
+            </article>
+            <div class="analysis__cta">
+              <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
+                <svg aria-hidden="true"><use href="#i-ig"/></svg> Ver análises no Instagram<span class="sr-only"> (abre em nova aba)</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== CONTACT ===================== -->
-    <section class="section" id="contato">
-      <div class="container contact">
-        <div class="contact-aside reveal">
-          <span class="eyebrow">Contato comercial</span>
-          <h2 class="section-title">Vamos <em>jogar juntos</em>?</h2>
-          <p class="section-lead">Preencha o formulário e conte um pouco sobre sua marca. Sua proposta chega direto para a equipe TDF.</p>
+    <!-- ===================== COMUNIDADE ===================== -->
+    <section class="community" id="comunidade" aria-labelledby="community-title" data-lazy-bg>
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Comunidade TDF</span>
+          <h2 class="sec-title" id="community-title">Uma torcida <span class="o">gigante</span> e engajada</h2>
+        </div>
 
-          <div class="direct-links">
-            <a class="direct-link" href="https://ig.me/m/tudodefutebol1_" target="_blank" rel="noopener">
-              <span class="stat-icon"><svg aria-hidden="true"><use href="#i-ig"/></svg></span>
-              <div><b>Direct do Instagram</b><span>@tudodefutebol1_</span></div>
-              <svg class="arrow-end" aria-hidden="true"><use href="#i-arrow"/></svg>
+        <div class="community__grid">
+          <figure class="stand reveal">
+            <canvas id="stand" role="img" aria-label="Arquibancada de 700 pontos que se acendem em verde; cada ponto representa 100 seguidores do TDF no Instagram."></canvas>
+            <figcaption class="stand__count">
+              <span class="stand__num"><span class="plus">+</span><span id="standCount" data-target="70">70</span><span class="suf">K</span></span>
+              <span class="stand__caption"><b>Seguidores no Instagram</b>Cada ponto verde na arquibancada representa 100 deles.</span>
+            </figcaption>
+          </figure>
+
+          <div class="reveal" data-delay="1">
+            <dl class="tally">
+              <div class="tally__title"><span>Números da torcida</span><span>@tudodefutebol1_</span></div>
+              <div class="tally__row">
+                <dt>Publicações e coberturas<small>Conteúdo diário, do plantão às análises.</small></dt>
+                <dd><span class="acc">+</span><span class="count" data-target="8.9" data-decimals="1">8.9</span><span class="acc">K</span></dd>
+              </div>
+              <div class="tally__row">
+                <dt>Leitores engajados por dia<small>Curtidas, comentários e compartilhamentos reais.</small></dt>
+                <dd class="word">Milhares</dd>
+              </div>
+              <div class="tally__row">
+                <dt>Dias por semana no ar<small>O futebol não para. A gente também não.</small></dt>
+                <dd><span class="count" data-target="7" data-decimals="0">7</span><span class="acc">/7</span></dd>
+              </div>
+            </dl>
+
+            <a class="igstrip" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer">
+              <span class="igstrip__avatar"><span><img src="assets/tdf-logo-estadio.jpg" width="48" height="48" alt="" loading="lazy" decoding="async" /></span></span>
+              <span class="igstrip__id"><b>@tudodefutebol1_</b><small>Tudo de Futebol · Instagram</small></span>
+              <span class="igstrip__btn">Entrar na torcida <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+              <span class="sr-only">(abre em nova aba)</span>
             </a>
-            <a class="direct-link" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener">
-              <span class="stat-icon"><svg aria-hidden="true"><use href="#i-users"/></svg></span>
-              <div><b>Siga o TDF</b><span>Notícias e análises todos os dias</span></div>
-              <svg class="arrow-end" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTATO COMERCIAL ===================== -->
+    <section class="contact" id="contato" aria-labelledby="contact-title">
+      <div class="container contact__grid">
+        <div class="reveal">
+          <span class="eyebrow">Contato comercial</span>
+          <h2 class="sec-title" id="contact-title">Vamos <span class="o">jogar juntos</span>?</h2>
+          <p class="sec-lead">Para marcas que querem falar com quem vive futebol. Conte sobre sua ideia: a mensagem chega direto para a equipe TDF.</p>
+
+          <div class="channels">
+            <a class="channel" href="https://ig.me/m/tudodefutebol1_" target="_blank" rel="noopener noreferrer">
+              <span class="channel__ico"><svg aria-hidden="true"><use href="#i-ig"/></svg></span>
+              <span><b>Direct do Instagram</b><small>@tudodefutebol1_</small></span>
+              <svg class="channel__arrow" aria-hidden="true"><use href="#i-ext"/></svg>
+              <span class="sr-only">(abre em nova aba)</span>
+            </a>
+            <a class="channel" href="https://wa.me/" data-wa target="_blank" rel="noopener noreferrer">
+              <span class="channel__ico"><svg aria-hidden="true"><use href="#i-wa"/></svg></span>
+              <span><b>WhatsApp</b><small>Mensagem pronta para enviar</small></span>
+              <svg class="channel__arrow" aria-hidden="true"><use href="#i-ext"/></svg>
+              <span class="sr-only">(abre em nova aba)</span>
             </a>
           </div>
         </div>
 
-        <div class="form-card reveal" data-delay="1">
+        <div class="form reveal" data-delay="1">
           <form id="partnerForm" novalidate>
-            <div class="form-grid">
+            <div class="form__grid">
               <div class="field">
                 <label for="nome">Nome <span class="req">*</span></label>
                 <input id="nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required />
@@ -1702,25 +1449,13 @@
                 <span class="err">Informe a empresa ou marca.</span>
               </div>
 
-              <fieldset class="field full" style="border:0">
-                <legend class="legend">Tipo de parceria</legend>
+              <fieldset class="field full">
+                <legend>Tipo de parceria</legend>
                 <div class="chips">
-                  <label class="chip">
-                    <input type="radio" name="tipo" value="Post Patrocinado" checked />
-                    <span><svg aria-hidden="true"><use href="#i-post"/></svg>Post Patrocinado</span>
-                  </label>
-                  <label class="chip">
-                    <input type="radio" name="tipo" value="Story" />
-                    <span><svg aria-hidden="true"><use href="#i-story"/></svg>Story</span>
-                  </label>
-                  <label class="chip">
-                    <input type="radio" name="tipo" value="Análise de Marca" />
-                    <span><svg aria-hidden="true"><use href="#i-star"/></svg>Análise de Marca</span>
-                  </label>
-                  <label class="chip">
-                    <input type="radio" name="tipo" value="Outro" />
-                    <span><svg aria-hidden="true"><use href="#i-dots"/></svg>Outro</span>
-                  </label>
+                  <label class="chip"><input type="radio" name="tipo" value="Post Patrocinado" checked /><span><svg aria-hidden="true"><use href="#i-post"/></svg>Post Patrocinado</span></label>
+                  <label class="chip"><input type="radio" name="tipo" value="Story" /><span><svg aria-hidden="true"><use href="#i-story"/></svg>Story</span></label>
+                  <label class="chip"><input type="radio" name="tipo" value="Análise de Marca" /><span><svg aria-hidden="true"><use href="#i-star"/></svg>Análise de Marca</span></label>
+                  <label class="chip"><input type="radio" name="tipo" value="Outro" /><span><svg aria-hidden="true"><use href="#i-dots"/></svg>Outro</span></label>
                 </div>
               </fieldset>
 
@@ -1731,221 +1466,585 @@
               </div>
             </div>
 
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary" data-channel="direct">
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary" data-channel="direct">
                 <svg aria-hidden="true"><use href="#i-ig"/></svg> Enviar via Direct
               </button>
-              <button type="submit" class="btn btn-ghost btn-wa" data-channel="whatsapp">
+              <button type="submit" class="btn btn--ghost btn--wa" data-channel="whatsapp">
                 <svg aria-hidden="true"><use href="#i-wa"/></svg> Enviar via WhatsApp
               </button>
             </div>
-            <p class="form-note">Sua mensagem é montada automaticamente e aberta no canal escolhido. Nada é armazenado neste site.</p>
+            <p class="form__note">A mensagem é montada automaticamente e aberta no canal escolhido. Nada é armazenado neste site.</p>
           </form>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== FIM DE JOGO ===================== -->
+    <section class="final" id="fim" aria-labelledby="final-title">
+      <div class="final__glow" aria-hidden="true"></div>
+      <div class="container final__inner">
+        <p class="final__kicker"><span class="live-dot"></span> Apito final</p>
+
+        <div class="led-wrap">
+          <figure class="final__screen" id="finalScreen">
+            <img src="assets/end.jpg" width="1200" height="900" alt="Display digital verde exibindo a palavra End" loading="lazy" decoding="async" />
+          </figure>
+          <div class="led-floor" aria-hidden="true"></div>
+        </div>
+
+        <h2 class="final__title" id="final-title">
+          <span>O jogo termina.</span>
+          <span class="o">A paixão não.</span>
+        </h2>
+        <p class="final__sub">Continue acompanhando o TDF.</p>
+        <a href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
+          <svg aria-hidden="true"><use href="#i-ig"/></svg> Seguir @tudodefutebol1_ no Instagram<span class="sr-only"> (abre em nova aba)</span>
+        </a>
       </div>
     </section>
   </main>
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
+    <svg class="footer__circle" viewBox="0 0 240 240" aria-hidden="true">
+      <circle cx="120" cy="120" r="118" fill="none" stroke="rgba(0,230,118,.35)" stroke-width="1.5"/>
+      <circle cx="120" cy="120" r="4" fill="#00E676"/>
+    </svg>
     <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="#home" class="logo" aria-label="Tudo de Futebol — início">
-            <svg class="logo-badge" aria-hidden="true"><use href="#tdf-badge"/></svg>
-            <div class="logo-text">Tudo de Futebol<span>TDF</span></div>
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#inicio" class="brand" aria-label="Tudo de Futebol — voltar ao início">
+            <svg class="brand__crest" viewBox="0 0 120 132" aria-hidden="true"><use href="#tdf-crest"/></svg>
+            <span class="brand__name" aria-hidden="true">Tudo de Futebol<small>TDF</small></span>
           </a>
-          <p class="slogan">O futebol não para. A gente também não.</p>
-          <p>Notícias, análises e estatísticas do futebol brasileiro e internacional para quem vive o jogo.</p>
+          <p class="footer__slogan">O futebol não para.<br><em>A gente também não.</em></p>
+          <p class="footer__desc">Notícias, análises e estatísticas do futebol brasileiro e internacional para quem vive o jogo.</p>
         </div>
 
-        <div>
-          <h4>Links rápidos</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
+        <nav aria-labelledby="footer-nav">
+          <h2 id="footer-nav">Navegação</h2>
+          <ul class="footer__links">
             <li><a href="#noticias">Notícias</a></li>
             <li><a href="#analises">Análises</a></li>
-            <li><a href="#estatisticas">Estatísticas</a></li>
-            <li><a href="#parcerias">Parcerias</a></li>
+            <li><a href="#comunidade">Comunidade</a></li>
+            <li><a href="#contato">Contato comercial</a></li>
           </ul>
-        </div>
+        </nav>
 
         <div>
-          <h4>Redes sociais</h4>
+          <h2>Siga o TDF</h2>
           <div class="socials">
-            <a class="social" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener" aria-label="Instagram do TDF">
+            <a class="social" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do TDF (abre em nova aba)">
               <svg aria-hidden="true"><use href="#i-ig"/></svg>
             </a>
-            <a class="social" href="https://ig.me/m/tudodefutebol1_" target="_blank" rel="noopener" aria-label="Enviar Direct para o TDF">
+            <a class="social" href="https://ig.me/m/tudodefutebol1_" target="_blank" rel="noopener noreferrer" aria-label="Enviar Direct para o TDF (abre em nova aba)">
               <svg aria-hidden="true"><use href="#i-chat"/></svg>
             </a>
           </div>
-          <a class="ig-follow" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener">
-            <b>@tudodefutebol1_</b>
-            Siga e ative as notificações
+          <a class="footer__handle" href="https://www.instagram.com/tudodefutebol1_/" target="_blank" rel="noopener noreferrer">
+            <b>@tudodefutebol1_</b><br>Siga e ative as notificações
           </a>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <span>© <span id="year">2026</span> Tudo de Futebol (TDF). Todos os direitos reservados.</span>
-        <a href="#home" class="to-top">Voltar ao topo <svg aria-hidden="true"><use href="#i-up"/></svg></a>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> Tudo de Futebol. Todos os direitos reservados.</span>
+        <span class="credit">Feito por <a href="https://jlkoficial.com" target="_blank" rel="noopener noreferrer">JLK Web &amp; Digital Services</a></span>
+        <a href="#inicio" class="to-top">Voltar ao topo <svg aria-hidden="true"><use href="#i-up"/></svg></a>
       </div>
     </div>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite">
-    <span class="stat-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+    <svg aria-hidden="true"><use href="#i-check"/></svg>
     <span id="toastMsg"></span>
   </div>
 
   <script>
     /* ---------------------------------------------------------
        CONFIGURAÇÃO
-       Coloque o número de WhatsApp comercial (DDI + DDD + número,
-       só dígitos), ex.: '5511999999999'. Se ficar vazio, o botão
-       de WhatsApp abre o app para escolher o contato.
+       Número de WhatsApp comercial (DDI + DDD + número, só dígitos),
+       ex.: '5511999999999'. Vazio = o WhatsApp abre para escolher o contato.
        --------------------------------------------------------- */
     const WHATSAPP_NUMBER = '';
     const INSTAGRAM_USER = 'tudodefutebol1_';
 
-    document.body.classList.remove('no-js');
-    document.getElementById('year').textContent = new Date().getFullYear();
+    (() => {
+      'use strict';
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+      const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* Header: background on scroll */
-    const header = document.getElementById('header');
-    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+      document.body.classList.remove('no-js');
+      $('#year').textContent = new Date().getFullYear();
 
-    /* Mobile menu */
-    const toggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const setMenu = (open) => {
-      document.body.classList.toggle('menu-open', open);
-      toggle.setAttribute('aria-expanded', open);
-      toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
-      mobileMenu.setAttribute('aria-hidden', !open);
-    };
-    toggle.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-    window.addEventListener('resize', () => { if (window.innerWidth >= 1000) setMenu(false); });
-
-    /* Active nav link by section in view */
-    const navLinks = document.querySelectorAll('.nav a');
-    const sectionIds = ['home', 'noticias', 'analises', 'estatisticas', 'parcerias'];
-    const spy = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+      /* WhatsApp link */
+      const waBase = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : 'https://wa.me/';
+      $$('[data-wa]').forEach(a => {
+        a.href = `${waBase}?text=${encodeURIComponent('Olá, equipe TDF! Quero conversar sobre uma parceria.')}`;
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sectionIds.forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
 
-    /* Reveal on scroll */
-    const revealer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          revealer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => revealer.observe(el));
-
-    /* Animated counters */
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const formatNum = (n, d) => n.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d }).replace(',', '.');
-    const runCounter = (el) => {
-      const target = parseFloat(el.dataset.target);
-      const decimals = parseInt(el.dataset.decimals || '0', 10);
-      if (reduceMotion) { el.textContent = formatNum(target, decimals); return; }
-      const duration = 1800;
-      const start = performance.now();
-      const tick = (now) => {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 4);
-        el.textContent = formatNum(target * eased, decimals);
-        if (p < 1) requestAnimationFrame(tick);
+      /* ---------- Mobile menu ---------- */
+      const toggle = $('#menuToggle');
+      const mobileMenu = $('#mobileMenu');
+      const setMenu = (open) => {
+        document.body.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        mobileMenu.inert = !open;
       };
-      requestAnimationFrame(tick);
-    };
-    const counterObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { runCounter(entry.target); counterObs.unobserve(entry.target); }
-      });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('.count').forEach(el => counterObs.observe(el));
+      toggle.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+      $$('a', mobileMenu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setMenu(false); toggle.focus(); } });
+      window.addEventListener('resize', () => { if (window.innerWidth >= 1040) setMenu(false); });
 
-    /* News filter */
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.news-card');
-    filterBtns.forEach(btn => btn.addEventListener('click', () => {
-      filterBtns.forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-selected', b === btn); });
-      const f = btn.dataset.filter;
-      cards.forEach(c => c.classList.toggle('hidden', f !== 'all' && c.dataset.cat !== f));
-    }));
+      /* ---------- Active nav ---------- */
+      const navLinks = $$('.nav a');
+      const spy = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + entry.target.id));
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      ['inicio', 'noticias', 'analises', 'comunidade', 'contato', 'fim'].forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
 
-    /* Toast */
-    const toast = document.getElementById('toast');
-    let toastTimer;
-    const showToast = (msg) => {
-      document.getElementById('toastMsg').textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 5000);
-    };
+      /* ---------- Reveal ---------- */
+      const revealer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('in'); revealer.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      $$('.reveal').forEach(el => revealer.observe(el));
 
-    /* Partnership form -> WhatsApp / Instagram Direct */
-    const form = document.getElementById('partnerForm');
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      /* ---------- Counters ---------- */
+      const formatNum = (n, d) => n.toFixed(d);
+      const runCounter = (el, duration = 1800) => {
+        const target = parseFloat(el.dataset.target);
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        if (reduceMotion) { el.textContent = formatNum(target, decimals); return; }
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          el.textContent = formatNum(target * (1 - Math.pow(1 - p, 4)), decimals);
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      const counterObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { runCounter(entry.target); counterObs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.6 });
+      $$('.count').forEach(el => { el.textContent = formatNum(0, parseInt(el.dataset.decimals || '0', 10)); counterObs.observe(el); });
 
-    const validate = () => {
-      let ok = true;
-      form.querySelectorAll('[required]').forEach(input => {
-        const field = input.closest('.field');
-        const value = input.value.trim();
-        const valid = value && (input.type !== 'email' || emailRe.test(value));
-        field.classList.toggle('invalid', !valid);
-        if (!valid && ok) { input.focus(); ok = false; }
-      });
-      return ok;
-    };
-    form.querySelectorAll('[required]').forEach(input =>
-      input.addEventListener('input', () => input.closest('.field').classList.remove('invalid'))
-    );
+      /* ---------- Manifesto: split words ---------- */
+      const manifesto = $('[data-words]');
+      const wrapWords = (node, key) => {
+        [...node.childNodes].forEach(child => {
+          if (child.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            child.textContent.split(/(\s+)/).forEach(tok => {
+              if (!tok) return;
+              if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(' ')); return; }
+              const s = document.createElement('span');
+              s.className = 'word' + (key ? ' is-key' : '');
+              s.textContent = tok;
+              frag.appendChild(s);
+            });
+            child.replaceWith(frag);
+          } else if (child.nodeType === 1) {
+            wrapWords(child, key || child.classList.contains('k'));
+          }
+        });
+      };
+      wrapWords(manifesto, false);
+      const words = $$('.word', manifesto);
+      if (reduceMotion) words.forEach(w => w.classList.add('is-lit'));
+      let litCount = -1;
+      const updateWords = (vh) => {
+        if (reduceMotion) return;
+        const r = manifesto.getBoundingClientRect();
+        const p = clamp((vh * 0.85 - r.top) / (r.height * 0.9 + vh * 0.3));
+        const n = Math.round(p * words.length);
+        if (n === litCount) return;
+        litCount = n;
+        words.forEach((w, i) => w.classList.toggle('is-lit', i < n));
+      };
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!validate()) return;
+      /* ---------- Scroll-driven: header, match clock, parallax ---------- */
+      const header = $('#header');
+      const hero = $('#inicio');
+      const bugHalf = $('#bugHalf');
+      const bugMin = $('#bugMin');
+      const finalSec = $('#fim');
+      const bigline = $('#bigline');
+      const manifestoMedia = $('#manifestoMedia img');
+      let ticking = false;
+      let updateLens = () => {};
+      const update = () => {
+        ticking = false;
+        const y = window.scrollY;
+        const vh = window.innerHeight;
+        header.classList.toggle('is-scrolled', y > 24);
 
-      const data = new FormData(form);
-      const msg =
-        `Olá, equipe TDF! Tenho interesse em uma parceria.\n\n` +
-        `*Nome:* ${data.get('nome').trim()}\n` +
-        `*E-mail:* ${data.get('email').trim()}\n` +
-        `*Empresa/Marca:* ${data.get('empresa').trim()}\n` +
-        `*Tipo de parceria:* ${data.get('tipo')}\n\n` +
-        `*Mensagem:*\n${data.get('mensagem').trim()}`;
+        // Relógio da partida: o scroll da página é o tempo de jogo.
+        const fr = finalSec.getBoundingClientRect();
+        if (fr.top < vh * 0.5) {
+          bugHalf.textContent = 'FIM'; bugMin.textContent = "90'";
+        } else {
+          const max = document.documentElement.scrollHeight - vh - finalSec.offsetHeight;
+          const m = Math.max(1, Math.min(89, Math.round(clamp(y / Math.max(max, 1)) * 90)));
+          bugHalf.textContent = m <= 45 ? '1ºT' : '2ºT';
+          bugMin.textContent = m + "'";
+        }
 
-      const channel = (e.submitter && e.submitter.dataset.channel) || 'direct';
+        updateWords(vh);
+        updateLens(vh);
+        if (reduceMotion) return;
 
-      if (channel === 'whatsapp') {
-        const base = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : 'https://wa.me/';
-        window.open(`${base}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-        showToast('Abrindo o WhatsApp com sua mensagem pronta. É só enviar!');
-      } else {
-        // Instagram Direct does not accept pre-filled text: copy it so the user can paste.
-        let copied = false;
-        try { await navigator.clipboard.writeText(msg.replace(/\*/g, '')); copied = true; } catch (_) {}
-        window.open(`https://ig.me/m/${INSTAGRAM_USER}`, '_blank', 'noopener');
-        showToast(copied
-          ? 'Mensagem copiada! Cole no Direct do @' + INSTAGRAM_USER + ' e envie.'
-          : 'Abrindo o Direct do @' + INSTAGRAM_USER + '. Conte sobre sua proposta por lá!');
+        if (y < hero.offsetHeight * 1.2) hero.style.setProperty('--p', clamp(y / hero.offsetHeight).toFixed(4));
+
+        const mr = manifestoMedia.getBoundingClientRect();
+        if (mr.bottom > 0 && mr.top < vh) manifestoMedia.style.setProperty('--mp', ((mr.top + mr.height / 2 - vh / 2) * -0.08).toFixed(1) + 'px');
+
+        const br = bigline.getBoundingClientRect();
+        if (br.bottom > 0 && br.top < vh) bigline.style.setProperty('--shift', ((vh - br.top) * -0.4).toFixed(1) + 'px');
+
+        if (fr.top < vh && fr.bottom > 0) finalSec.style.setProperty('--fp', clamp((vh - fr.top) / (vh * 0.85)).toFixed(4));
+      };
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      if (!reduceMotion) finalSec.style.setProperty('--fp', '0');
+      update();
+
+      /* ---------- Hero pointer parallax ---------- */
+      if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+        let mx = 0, my = 0, pending = false;
+        hero.addEventListener('pointermove', e => {
+          mx = (e.clientX / window.innerWidth) * 2 - 1;
+          my = (e.clientY / window.innerHeight) * 2 - 1;
+          if (pending) return;
+          pending = true;
+          requestAnimationFrame(() => {
+            pending = false;
+            hero.style.setProperty('--mx', mx.toFixed(3));
+            hero.style.setProperty('--my', my.toFixed(3));
+          });
+        });
       }
-      form.reset();
-    });
+
+      /* ---------- Hero crowd (canvas) ---------- */
+      (() => {
+        const c = $('#crowd');
+        const ctx = c.getContext('2d');
+        const base = document.createElement('canvas');
+        const b = base.getContext('2d');
+        let W = 0, H = 0, dpr = 1, seats = [], flashes = [], raf = 0, last = 0;
+
+        const build = () => {
+          const w = c.clientWidth, h = c.clientHeight;
+          if (!w || !h || (w === W && Math.abs(h - H) < 80)) return;
+          W = w; H = h;
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          c.width = base.width = Math.round(W * dpr);
+          c.height = base.height = Math.round(H * dpr);
+          b.setTransform(dpr, 0, 0, dpr, 0, 0);
+          b.clearRect(0, 0, W, H);
+          seats = [];
+          const rows = Math.max(16, Math.round(H / 9));
+          for (let i = 0; i < rows; i++) {
+            const t = i / (rows - 1);              // 0 = fundo da arquibancada, 1 = frente
+            const gap = 4 + t * 7;
+            const rad = 0.8 + t * 1.9;
+            const yb = 6 + Math.pow(t, 1.15) * (H - 12);
+            const curve = (1 - t) * H * 0.16 + H * 0.04;
+            for (let x = (i % 2) * gap / 2; x < W; x += gap) {
+              const dx = (x - W / 2) / (W / 2);
+              const y = yb - curve * dx * dx + (Math.random() - 0.5) * 1.5;
+              const light = (1 - Math.abs(dx) * 0.45) * (0.55 + t * 0.45);
+              const green = Math.random() < 0.08;
+              b.fillStyle = green
+                ? `rgba(0,230,118,${((0.25 + Math.random() * 0.4) * light).toFixed(3)})`
+                : `rgba(${(200 + Math.random() * 40) | 0},${(215 + Math.random() * 40) | 0},${(205 + Math.random() * 30) | 0},${((0.05 + Math.random() * 0.22) * light).toFixed(3)})`;
+              b.beginPath();
+              b.arc(x + (Math.random() - 0.5) * gap * 0.3, y, rad * (0.8 + Math.random() * 0.4), 0, 6.283);
+              b.fill();
+              if (Math.random() < 0.02) seats.push([x, y, rad]);
+            }
+          }
+          paint(performance.now());
+        };
+
+        const paint = (now) => {
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.clearRect(0, 0, c.width, c.height);
+          ctx.drawImage(base, 0, 0);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          flashes = flashes.filter(f => now - f.t < 380);
+          for (const f of flashes) {
+            const k = 1 - (now - f.t) / 380;
+            const rr = f.r * 6;
+            const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, rr);
+            g.addColorStop(0, `rgba(255,255,255,${(0.95 * k).toFixed(3)})`);
+            g.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = g;
+            ctx.beginPath(); ctx.arc(f.x, f.y, rr, 0, 6.283); ctx.fill();
+          }
+        };
+
+        const loop = (now) => {
+          raf = requestAnimationFrame(loop);
+          if (now - last < 50) return;
+          last = now;
+          if (seats.length && Math.random() < 0.35) {
+            const s = seats[(Math.random() * seats.length) | 0];
+            flashes.push({ x: s[0], y: s[1], r: s[2], t: now });
+          }
+          paint(now);
+        };
+
+        build();
+        let rt;
+        window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 200); });
+        if (!reduceMotion) {
+          new IntersectionObserver(([e]) => {
+            cancelAnimationFrame(raf);
+            if (e.isIntersecting) raf = requestAnimationFrame(loop);
+          }).observe(c);
+        }
+      })();
+
+      /* ---------- Story spotlight ---------- */
+      $$('.story__link').forEach(link => {
+        link.addEventListener('pointermove', e => {
+          const r = link.getBoundingClientRect();
+          link.style.setProperty('--x', (e.clientX - r.left) + 'px');
+          link.style.setProperty('--y', (e.clientY - r.top) + 'px');
+        });
+      });
+
+      /* ---------- News filter ---------- */
+      const feed = $('#feed');
+      const filters = $$('.filter');
+      const stories = $$('.story', feed);
+      filters.forEach(btn => btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+        filters.forEach(b => b.setAttribute('aria-pressed', b === btn));
+        feed.classList.toggle('is-filtered', f !== 'all');
+        stories.forEach(s => {
+          const show = f === 'all' || s.dataset.cat === f;
+          s.hidden = !show;
+          if (show) { s.style.animation = 'none'; void s.offsetWidth; s.style.animation = ''; }
+        });
+      }));
+
+      /* ---------- Tactical board ---------- */
+      const STATES = {
+        tatico: {
+          label: '4-3-3 · Saída de bola',
+          desc: 'Quadro tático ilustrativo: time em 4-3-3 na saída de bola, com as linhas de corrida dos jogadores.',
+          team: [[45,195],[120,90],[105,157],[105,232],[120,300],[225,195],[255,120],[165,300],[393,105],[393,195],[393,292]],
+          ball: [237, 205]
+        },
+        dados: {
+          label: 'Mapa de calor · Rede de passes',
+          desc: 'Mapa de calor ilustrativo com a rede de passes do time: linhas mais grossas indicam as ligações mais usadas.',
+          team: [[70,195],[230,85],[215,160],[215,230],[230,305],[320,90],[305,165],[305,225],[320,300],[410,160],[410,235]],
+          ball: [318, 176]
+        },
+        opiniao: {
+          label: 'Leitura TDF · Espaço entre linhas',
+          desc: 'Leitura ilustrativa: o atacante recebe no espaço entre a linha de meio-campo e a linha de defesa do adversário.',
+          team: [[60,195],[190,75],[170,160],[170,230],[190,315],[280,195],[300,105],[300,285],[400,195],[495,52],[495,338]],
+          ball: [412, 204]
+        }
+      };
+      const board = $('#board');
+      const players = $$('#team .pl');
+      const ball = $('#ball');
+      const boardLabel = $('#boardLabel');
+      const boardDesc = $('#boardDesc');
+      const tabs = $$('.board__tab');
+      const lenses = $$('.lens');
+      let current = 'tatico';
+      const setState = (s) => {
+        if (s === current || !STATES[s]) return;
+        current = s;
+        const st = STATES[s];
+        board.dataset.state = s;
+        players.forEach((p, i) => { p.style.transform = `translate(${st.team[i][0]}px, ${st.team[i][1]}px)`; });
+        ball.style.transform = `translate(${st.ball[0]}px, ${st.ball[1]}px)`;
+        boardLabel.textContent = st.label;
+        boardDesc.textContent = st.desc;
+        tabs.forEach(t => t.setAttribute('aria-pressed', t.dataset.state === s));
+        lenses.forEach(l => l.classList.toggle('is-active', l.dataset.state === s));
+      };
+      tabs.forEach(t => t.addEventListener('click', () => setState(t.dataset.state)));
+      // A lente mais próxima da linha de leitura comanda o quadro.
+      const analysisSec = $('#analises');
+      let lastLens = 'tatico';
+      updateLens = (vh) => {
+        const ar = analysisSec.getBoundingClientRect();
+        if (ar.bottom < 0 || ar.top > vh) return;
+        const line = vh * (window.innerWidth >= 1000 ? 0.5 : 0.7);
+        let best = null, bestD = Infinity;
+        lenses.forEach(l => {
+          const r = l.getBoundingClientRect();
+          const d = r.top > line ? r.top - line : r.bottom < line ? line - r.bottom : 0;
+          if (d < bestD) { bestD = d; best = l; }
+        });
+        if (best && bestD < vh * 0.35 && best.dataset.state !== lastLens) {
+          lastLens = best.dataset.state;
+          setState(lastLens);
+        }
+      };
+      updateLens(window.innerHeight);
+
+      /* ---------- Community stand (canvas) ---------- */
+      (() => {
+        const c = $('#stand');
+        const ctx = c.getContext('2d');
+        const countEl = $('#standCount');
+        const N = 700;                        // 700 pontos × 100 = 70 mil seguidores
+        const rank = Array.from({ length: N }, (_, i) => i);
+        for (let i = N - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [rank[i], rank[j]] = [rank[j], rank[i]]; }
+        const lum = Array.from({ length: N }, () => 0.28 + Math.random() * 0.6);
+        let W = 0, H = 0, cols = 35, rows = 20, cell = 10, lit = 0, wave = -99, raf = 0, startT = 0, started = false, visible = false;
+
+        const size = () => {
+          const w = c.parentElement.clientWidth;
+          if (!w || w === W) return;
+          W = w;
+          cols = W < 560 ? 25 : 35;
+          rows = Math.ceil(N / cols);
+          cell = W / cols;
+          H = Math.round(rows * cell * 0.78);
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          c.style.height = H + 'px';
+          c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          draw();
+        };
+
+        const draw = () => {
+          ctx.clearRect(0, 0, W, H);
+          const rowH = H / rows, r = cell * 0.27;
+          for (let i = 0; i < N; i++) {
+            const col = i % cols, row = (i / cols) | 0;
+            const d = col - wave;
+            const boost = Math.exp(-(d * d) / 4);
+            const x = (col + 0.5) * cell + (row % 2 ? cell * 0.12 : -cell * 0.12);
+            const y = (row + 0.5) * rowH - boost * rowH * 0.45;
+            ctx.fillStyle = rank[i] < lit
+              ? `rgba(0,230,118,${Math.min(1, lum[i] + boost * 0.6).toFixed(3)})`
+              : 'rgba(242,245,240,0.08)';
+            ctx.beginPath(); ctx.arc(x, y, r * (1 + boost * 0.25), 0, 6.283); ctx.fill();
+          }
+        };
+
+        const FILL = 2400, WAVE_EVERY = 5200, WAVE_DUR = 1800;
+        const loop = (now) => {
+          raf = requestAnimationFrame(loop);
+          const t = now - startT;
+          if (t < FILL) {
+            lit = Math.round(N * (1 - Math.pow(1 - t / FILL, 3)));
+            wave = -99;
+          } else {
+            lit = N;
+            const wt = (t - FILL) % WAVE_EVERY;
+            wave = wt < WAVE_DUR ? -4 + (wt / WAVE_DUR) * (cols + 8) : -99;
+          }
+          draw();
+        };
+
+        size();
+        window.addEventListener('resize', size);
+
+        if (reduceMotion) { lit = N; draw(); return; }
+        countEl.textContent = '0';
+        new IntersectionObserver(([e]) => {
+          visible = e.isIntersecting;
+          cancelAnimationFrame(raf);
+          if (!visible) return;
+          if (!started) { started = true; startT = performance.now(); runCounter(countEl, FILL); }
+          raf = requestAnimationFrame(loop);
+        }, { threshold: 0.35 }).observe(c);
+      })();
+
+      /* ---------- Placar "End" ---------- */
+      const finalScreen = $('#finalScreen');
+      if (reduceMotion) finalScreen.classList.add('is-on');
+      else new IntersectionObserver(([e], obs) => {
+        if (e.isIntersecting) { finalScreen.classList.add('is-on'); obs.disconnect(); }
+      }, { threshold: 0.35 }).observe(finalScreen);
+
+      /* ---------- Lazy section backgrounds ---------- */
+      const bgObs = new IntersectionObserver((entries, obs) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('bg-ready'); obs.unobserve(e.target); }
+      }), { rootMargin: '600px 0px' });
+      $$('[data-lazy-bg]').forEach(el => bgObs.observe(el));
+
+      /* ---------- Toast ---------- */
+      const toast = $('#toast');
+      let toastTimer;
+      const showToast = (msg) => {
+        $('#toastMsg').textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 5000);
+      };
+
+      /* ---------- Partnership form -> WhatsApp / Instagram Direct ---------- */
+      const form = $('#partnerForm');
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const validate = () => {
+        let ok = true;
+        $$('[required]', form).forEach(input => {
+          const field = input.closest('.field');
+          const value = input.value.trim();
+          const valid = value && (input.type !== 'email' || emailRe.test(value));
+          field.classList.toggle('invalid', !valid);
+          input.setAttribute('aria-invalid', !valid);
+          if (!valid && ok) { input.focus(); ok = false; }
+        });
+        return ok;
+      };
+      $$('[required]', form).forEach(input => input.addEventListener('input', () => {
+        input.closest('.field').classList.remove('invalid');
+        input.removeAttribute('aria-invalid');
+      }));
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!validate()) return;
+        const data = new FormData(form);
+        const msg =
+          `Olá, equipe TDF! Tenho interesse em uma parceria.\n\n` +
+          `*Nome:* ${data.get('nome').trim()}\n` +
+          `*E-mail:* ${data.get('email').trim()}\n` +
+          `*Empresa/Marca:* ${data.get('empresa').trim()}\n` +
+          `*Tipo de parceria:* ${data.get('tipo')}\n\n` +
+          `*Mensagem:*\n${data.get('mensagem').trim()}`;
+        const channel = (e.submitter && e.submitter.dataset.channel) || 'direct';
+
+        if (channel === 'whatsapp') {
+          window.open(`${waBase}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+          showToast('Abrindo o WhatsApp com sua mensagem pronta. É só enviar!');
+        } else {
+          // O Direct do Instagram não aceita texto pré-preenchido: copiamos para o usuário colar.
+          let copied = false;
+          try { await navigator.clipboard.writeText(msg.replace(/\*/g, '')); copied = true; } catch (_) {}
+          window.open(`https://ig.me/m/${INSTAGRAM_USER}`, '_blank', 'noopener');
+          showToast(copied
+            ? `Mensagem copiada! Cole no Direct do @${INSTAGRAM_USER} e envie.`
+            : `Abrindo o Direct do @${INSTAGRAM_USER}. Conte sobre sua proposta por lá!`);
+        }
+        form.reset();
+      });
+    })();
   </script>
 </body>
 </html>
